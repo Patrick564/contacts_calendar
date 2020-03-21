@@ -15,14 +15,14 @@ class AccountUserManager(UserManager):
 
         return user
 
-    def create_user(self, email=None, password=None, **extra_fields):
+    def create_user(self, email, password=None, **extra_fields):
         return self._create_user(
             email=email,
             password=password,
             **extra_fields
         )
 
-    def create_superuser(self, email=None, password=None, **extra_fields):
+    def create_superuser(self, email, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -36,16 +36,16 @@ class AccountUserManager(UserManager):
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-    GENDER_CHOICES = (
+    GENDER_CHOICES = [
         ('F', 'Female'),
         ('M', 'Male'),
-    )
+    ]
 
     username = models.CharField(blank=True, unique=False, max_length=50)
-    email = models.EmailField(required=True, unique=True, max_length=254)
+    email = models.EmailField(unique=True, max_length=254)
     date_of_birth = models.DateField(auto_now=False, auto_now_add=False)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=15)
-    phone_number = models.PhoneNumberField()
+    phone_number = models.IntegerField()
 
     objects = AccountUserManager()
 
@@ -55,11 +55,11 @@ class User(AbstractUser):
 
 class ContactsFields(models.Model):
     email = models.ForeignKey(
-        'User',
+        User,
         on_delete=models.CASCADE
     )
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    phone_number = models.PhoneNumberField()
+    phone_number = models.IntegerField()
     contact_email = models.EmailField(max_length=254)
     date_of_birth = models.DateField(auto_now=False, auto_now_add=False)

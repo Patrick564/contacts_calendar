@@ -15,7 +15,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'accounts.models.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 AUTHENTICATION_BACKENDS = (
     'accounts.backend.AuthBackend',

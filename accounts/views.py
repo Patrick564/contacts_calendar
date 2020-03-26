@@ -1,3 +1,81 @@
+# Django imports
 from django.shortcuts import render
+from django.views import View
+from django.views.generic.edit import FormView
+# from django.views.generic.base import RedirectView
+from django.core.mail import send_mail
 
-# Create your views here.
+
+# App imports
+from contacts_calendar import settings
+from .models import User
+from .forms import CustomCreationForm, CustomChangeForm
+
+
+def index(request):
+    return render(request, 'accounts/index.html')
+
+
+# Profile user
+class ProfileView(View):
+
+    def get(self, request):
+        pass
+
+    def post(self, request):
+        pass
+
+
+# Settings of user profile
+class SettingsProfileView(View):
+    pass
+
+
+# Update user data --- Revisar de View->FormView
+class UpdateAccount(View):
+    model = User
+    form = CustomChangeForm
+    greeting = 'Update account'
+    template_name = 'accounts/update_account.html'
+
+    def get(self, request):
+        form = self.form
+        template = self.template_name
+
+        context = {
+            'form': form,
+        }
+
+        return render(request, template, context)
+
+    def post(self, request):
+        pass
+
+
+# Create account with custom fields
+class CreateAccountView(FormView):
+    model = User
+    form_class = CustomCreationForm
+    greeting = 'Create account'
+    template_name = 'accounts/create_account.html'
+    success_url = '/accounts/create/success/'
+
+    def form_valid(self, form):
+        send_mail(
+            'Welcome',
+            'Register verification',
+            settings.EMAIL_HOST_USER,
+            ['email'],
+            fail_silently=False
+        )
+
+        return super().form_valid(form)
+
+
+class DoneCreateAccountView(View):
+    template_name = 'accounts/success_create_account.html'
+
+    def get(self, request):
+        template = self.template_name
+
+        return render(request, template)

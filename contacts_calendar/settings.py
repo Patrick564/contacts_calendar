@@ -22,20 +22,36 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+# Email custom settings
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smpt.googlemail.com'
+
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = 'pvilchez794@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'phnalsfiolagmmkr'
+
+EMAIL_USE_TLS = True
 
 # Application definition
 
 INSTALLED_APPS = [
+
+    # Created apps
+    'accounts',
+    'contacts',
+    'contact_list',
+
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'accounts',
-    'contacts',
-    'contact_list',
 ]
 
 MIDDLEWARE = [

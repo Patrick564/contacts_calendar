@@ -43,7 +43,7 @@ class User(AbstractUser):
         ('M', 'Male'),
     ]
 
-    # user_uuid = models.UUIDField(default=uuid4, editable=False)
+    user_uuid = models.UUIDField(default=uuid4, editable=False)
     username = models.CharField(blank=True, unique=False, max_length=50)
     email = models.EmailField(unique=True, max_length=254)
     date_of_birth = models.DateField(auto_now=False, auto_now_add=False)
@@ -57,11 +57,7 @@ class User(AbstractUser):
 
 
 class ContactsFields(models.Model):
-    # user_uuid = models.ForeignKey(
-    #     User,
-    #     on_delete=models.CASCADE
-    # )
-    email = models.ForeignKey(
+    user_uuid = models.ForeignKey(
         User,
         on_delete=models.CASCADE
     )

@@ -2,12 +2,14 @@
 from django.shortcuts import render
 from django.views import View
 from django.views.generic.edit import FormView
-# from django.views.generic.base import RedirectView
+from django.views.generic.base import TemplateView
 from django.core.mail import send_mail
 
 
-# App imports
+# Settings import
 from contacts_calendar import settings
+
+# App imports
 from .models import User
 from .forms import CustomCreationForm, CustomChangeForm
 
@@ -61,21 +63,24 @@ class CreateAccountView(FormView):
     success_url = '/accounts/create/success/'
 
     def form_valid(self, form):
+        email = self.POST['email']
+
         send_mail(
             'Welcome',
             'Register verification',
             settings.EMAIL_HOST_USER,
-            ['email'],
+            [email],
             fail_silently=False
         )
 
         return super().form_valid(form)
 
 
-class DoneCreateAccountView(View):
+# Donde create account, redirect to principal page
+class DoneCreateAccountView(TemplateView):
     template_name = 'accounts/success_create_account.html'
 
-    def get(self, request):
-        template = self.template_name
+    # def get(self, request):
+    #     template = self.template_name
 
-        return render(request, template)
+    #     return render(request, template)

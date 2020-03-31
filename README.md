@@ -1,2 +1,2 @@
-# contact_calendar
+# Contacts Calendar
 A contacts page with django

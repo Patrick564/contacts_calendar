@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.contrib.auth import authenticate
 
 from .models import User
 
@@ -17,17 +18,11 @@ class UserTestCase(TestCase):
         )
 
     def test_fields_success(self):
-        """Email is successfuy saved"""
+        """Email is successfuy saved and authenticated"""
         lia = User.objects.get(email='lia@re.com')
+        password = 'aiacos22'
+        u = authenticate(email=lia.email, password=password)
 
-        self.assertEqual(lia.email, 'lia@re.com')
-
-    # def test_send_email(self):
-    #     """Send a email"""
-    #     send_mail(
-    #         'Welcome',
-    #         'Register verification',
-    #         settings.EMAIL_HOST_USER,
-    #         [email],
-    #         fail_silently=False
-    #     )
+        self.assertEqual(lia.email, 'lia@re.com', 'bad email')
+        self.assertIsNotNone(u, 'bad auth')
+        # self.assertIsNone(u, 'is none')

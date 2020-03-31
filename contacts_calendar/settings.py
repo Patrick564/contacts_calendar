@@ -13,7 +13,7 @@ SECRET_KEY = 'wet$tem&_(@y+&@^(u&m@*&+g%29(*6#s*6#b3#&z^86ioy9qe'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserver']
 
 AUTH_USER_MODEL = 'accounts.User'
 

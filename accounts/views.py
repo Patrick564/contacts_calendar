@@ -62,6 +62,9 @@ class CreateAccountView(FormView):
     template_name = 'accounts/create_account.html'
     success_url = '/accounts/create/success/'
 
+    def welcome_mail(self):
+        pass
+
     def form_valid(self, form):
         email = self.POST['email']
 
@@ -79,8 +82,3 @@ class CreateAccountView(FormView):
 # Donde create account, redirect to principal page
 class DoneCreateAccountView(TemplateView):
     template_name = 'accounts/success_create_account.html'
-
-    # def get(self, request):
-    #     template = self.template_name
-
-    #     return render(request, template)

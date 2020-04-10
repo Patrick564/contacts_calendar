@@ -1,5 +1,7 @@
+# Django imports
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
+# App imports
 from .models import User
 
 

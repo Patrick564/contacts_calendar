@@ -13,7 +13,7 @@ SECRET_KEY = 'wet$tem&_(@y+&@^(u&m@*&+g%29(*6#s*6#b3#&z^86ioy9qe'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['testserver']
+ALLOWED_HOSTS = ['testserver', '127.0.0.1']
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -23,7 +23,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Email custom settings
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
@@ -44,6 +43,9 @@ INSTALLED_APPS = [
     'accounts',
     'contacts',
     'contact_list',
+
+    # Installed libraries
+    'phone_field',
 
     # Django apps
     'django.contrib.admin',
@@ -126,20 +128,26 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Lima'
 
-DATETIME_FORMAT = 'j N Y, P'
+# DATE_FORMAT = ['%d-%m-%Y']
 
-DATETIME_INPUT_FORMATS = [
-    '%d/%m/%Y %H:%M:%S'
-    ]
+# DATETIME_FORMAT = 'j N Y, P'
+
+# DATETIME_INPUT_FORMATS = [
+#     '%d/%m/%Y %H:%M:%S'
+#     ]
 
 USE_I18N = True
 
 USE_L10N = False
 
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'

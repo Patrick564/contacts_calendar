@@ -4,7 +4,9 @@ from django.views import View
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
 from django.core.mail import send_mail
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 # Settings import
 from contacts_calendar import settings
@@ -19,10 +21,14 @@ def index(request):
 
 
 # Profile user
-class ProfileView(View):
+class ProfileView(LoginRequiredMixin, View):
+    login_url = '/accounts/login/'
+    template_name = 'accounts/profile.html'
 
     def get(self, request):
-        pass
+        template = self.template_name
+
+        return render(request, template)
 
     def post(self, request):
         pass
@@ -62,23 +68,31 @@ class CreateAccountView(FormView):
     template_name = 'accounts/create_account.html'
     success_url = '/accounts/create/success/'
 
-    def welcome_mail(self):
-        pass
+    # Send a welcome mail for new accounts
+    def _welcome_mail(self, email, first_name):
+        html_context = {'first_name': first_name}
+        html_message = render_to_string('mail/welcome_mail.html', html_context)
+        html_plain_text = strip_tags(html_message)
+
+        send_mail(
+            'New account register',
+            html_plain_text,
+            settings.EMAIL_HOST_USER,
+            [email],
+            fail_silently=False,
+            html_message=html_message
+        )
 
     def form_valid(self, form):
         email = self.POST['email']
+        first_name = self.POST['fist_name']
 
-        send_mail(
-            'Welcome',
-            'Register verification',
-            settings.EMAIL_HOST_USER,
-            [email],
-            fail_silently=False
-        )
+        self._welcome_mail(email, first_name)
 
         return super().form_valid(form)
 
 
 # Donde create account, redirect to principal page
-class DoneCreateAccountView(TemplateView):
-    template_name = 'accounts/success_create_account.html'
+class DoneCreateAccountView(LoginRequiredMixin, TemplateView):
+    template_name = 'accounts/create_account_done.html'
+    login_url = '/accounts/create/'

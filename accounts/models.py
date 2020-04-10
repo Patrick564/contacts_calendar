@@ -3,6 +3,8 @@ from uuid import uuid4
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
+from phone_field import PhoneField
+
 
 class AccountUserManager(UserManager):
 
@@ -21,6 +23,7 @@ class AccountUserManager(UserManager):
         return self._create_user(
             email=email,
             password=password,
+            is_active=False,
             **extra_fields
         )
 
@@ -48,7 +51,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True, max_length=254)
     date_of_birth = models.DateField(auto_now=False, auto_now_add=False)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=15)
-    phone_number = models.IntegerField()
+    phone_number = PhoneField()
 
     objects = AccountUserManager()
 

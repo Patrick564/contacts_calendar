@@ -6,14 +6,16 @@ from .models import User
 class AuthBackend(BaseBackend):
 
     def authenticate(self, request, email, password):
-        try:
-            user = User.objects.get(email=email)
+        if email and password:
+            try:
+                user = User.objects.get(email=email)
 
-            if user.check_password(password):
-                return user
+            except User.DoesNotExist:
+                return None
 
-        except User.DoesNotExist:
-            return None
+            else:
+                if user.is_active:
+                    return user
 
     def get_user(self, user_id):
         try:

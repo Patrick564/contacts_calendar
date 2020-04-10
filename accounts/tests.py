@@ -1,28 +1,63 @@
 from django.test import TestCase
 from django.contrib.auth import authenticate
+# from django.core.mail import send_mail
 
 from .models import User
 
 
+# Test about custom user model
 class UserTestCase(TestCase):
 
+    # Create accounts
     def setUp(self):
-        User.objects.create_user(
+        lia = User.objects.create_user(
             email='lia@re.com',
             password='aiacos22',
             first_name='Lia',
             last_name='Lia',
             gender='Female',
-            date_of_birth='2011-02-03',
-            phone_number='922344135',
+            date_of_birth='2011-03-02',
+            phone_number='+51 922 344 135'
         )
+        lia.is_active = True
+        lia.save()
 
-    def test_fields_success(self):
-        """Email is successfuy saved and authenticated"""
+        rem = User.objects.create_user(
+            email='empresa@coronita.com',
+            password='ninguno123',
+            first_name='Rem',
+            last_name='Hibike',
+            gender='Female',
+            date_of_birth='1995-05-02',
+            phone_number='+51 933 222 345'
+        )
+        rem.is_active = True
+        rem.save()
+
+    # Auth account
+    def test_auth_account(self):
         lia = User.objects.get(email='lia@re.com')
-        password = 'aiacos22'
-        u = authenticate(email=lia.email, password=password)
+        rem = User.objects.get(email='empresa@coronita.com')
+        password_lia = 'aiacos22'
+        password_rem = 'ninguno123'
 
-        self.assertEqual(lia.email, 'lia@re.com', 'bad email')
-        self.assertIsNotNone(u, 'bad auth')
-        # self.assertIsNone(u, 'is none')
+        lia = authenticate(email=lia.email, password=password_lia)
+        rem = authenticate(email=rem.email, password=password_rem)
+
+        self.assertEqual(lia.email, 'lia@re.com', 'Wrong Lia email')
+        self.assertEqual(rem.email, 'empresa@coronita.com', 'Wrong Rem email')
+        self.assertIsNotNone(lia, 'Auth Lia error')
+        self.assertIsNotNone(rem, 'Auth Rem error')
+
+    # Password change
+    def test_password_change(self):
+        lia = User.objects.get(email='lia@re.com')
+        rem = User.objects.get(email='empresa@coronita.com')
+        lia.set_password('newpassword123')
+        rem.set_password('newpassword456')
+
+        lia = authenticate(email=lia.email, password='newpassword123')
+        rem = authenticate(email=rem.email, password='newpassword456')
+
+        self.assertIsNotNone(lia, 'Auth Lia error')
+        self.assertIsNotNone(rem, 'Auth Rem error')

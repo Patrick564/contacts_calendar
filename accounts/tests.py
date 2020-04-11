@@ -61,3 +61,17 @@ class UserTestCase(TestCase):
 
         self.assertIsNotNone(lia, 'Auth Lia error')
         self.assertIsNotNone(rem, 'Auth Rem error')
+
+    # Create account with a repeated email
+    def test_create_account_with_same_email(self):
+        ram = User.objects.create_user(
+            email='empresa@coronita.com',
+            password='newpass123',
+            first_name='Ram',
+            last_name='Minatsuki',
+            gender='Female',
+            date_of_birth='1999-09-24',
+            phone_number='+51 959 934 789'
+        )
+
+        self.assertNotEqual(ram, 'empresa@coronita.com', 'User repeated')

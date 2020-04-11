@@ -12,6 +12,9 @@ class AccountUserManager(UserManager):
         if not email:
             raise ValueError('Email is required')
 
+        if User.objects.filter(email=email).exists():
+            return ValueError('Email is already registered')
+
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)

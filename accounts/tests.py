@@ -1,7 +1,8 @@
+# Django imports
 from django.test import TestCase
 from django.contrib.auth import authenticate
-# from django.core.mail import send_mail
 
+# App imports
 from .models import User
 
 
@@ -10,6 +11,9 @@ class UserTestCase(TestCase):
 
     # Create accounts
     def setUp(self):
+        """
+        Initial accounts in posterior tests.
+        """
         lia = User.objects.create_user(
             email='lia@re.com',
             password='aiacos22',

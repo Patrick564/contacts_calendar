@@ -27,16 +27,27 @@ class ProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
         template = self.template_name
+        fields = request.user
 
-        return render(request, template)
+        context = {
+            'fields': fields
+        }
+
+        return render(request, template, context)
 
     def post(self, request):
         pass
 
 
 # Settings of user profile
-class SettingsProfileView(View):
-    pass
+class SettingsView(LoginRequiredMixin, View):
+    login_url = '/accounts/login/'
+    template_name = 'accounts/settings.html'
+
+    def get(self, request):
+        template = self.template_name
+
+        return render(request, template)
 
 
 # Update user data --- Revisar de View->FormView
@@ -62,6 +73,10 @@ class UpdateAccount(View):
 
 # Create account with custom fields
 class CreateAccountView(FormView):
+    """
+    Create a account and send a welcome mail with
+    a link to authenticate and validate the account.
+    """
     model = User
     form_class = CustomCreationForm
     greeting = 'Create account'
@@ -75,7 +90,7 @@ class CreateAccountView(FormView):
         html_plain_text = strip_tags(html_message)
 
         send_mail(
-            'New account register',
+            'Welcome to Contacts Calendar!',
             html_plain_text,
             settings.EMAIL_HOST_USER,
             [email],
@@ -83,6 +98,7 @@ class CreateAccountView(FormView):
             html_message=html_message
         )
 
+    # Search about forms and formviews
     def form_valid(self, form):
         email = self.POST['email']
         first_name = self.POST['fist_name']

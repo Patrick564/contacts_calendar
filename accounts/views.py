@@ -1,7 +1,6 @@
 # Django imports
-from django.shortcuts import render
-from django.views import View
-from django.views.generic.edit import FormView
+from django.shortcuts import render, HttpResponseRedirect
+from django.views.generic.edit import FormView, UpdateView
 from django.views.generic.base import TemplateView
 from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -13,7 +12,7 @@ from contacts_calendar import settings
 
 # App imports
 from .models import User
-from .forms import CustomCreationForm, CustomChangeForm
+from .forms import CustomCreationForm
 
 
 def index(request):
@@ -21,54 +20,14 @@ def index(request):
 
 
 # Profile user
-class ProfileView(LoginRequiredMixin, View):
+class ProfileView(LoginRequiredMixin, UpdateView):
     login_url = '/accounts/login/'
-    template_name = 'accounts/profile.html'
-
-    def get(self, request):
-        template = self.template_name
-        fields = request.user
-
-        context = {
-            'fields': fields
-        }
-
-        return render(request, template, context)
-
-    def post(self, request):
-        pass
-
-
-# Settings of user profile
-class SettingsView(LoginRequiredMixin, View):
-    login_url = '/accounts/login/'
-    template_name = 'accounts/settings.html'
-
-    def get(self, request):
-        template = self.template_name
-
-        return render(request, template)
-
-
-# Update user data --- Revisar de View->FormView
-class UpdateAccount(View):
     model = User
-    form = CustomChangeForm
-    greeting = 'Update account'
-    template_name = 'accounts/update_account.html'
+    fields = ['first_name']
+    template_name = 'accounts/account_update_form.html'
 
-    def get(self, request):
-        form = self.form
-        template = self.template_name
-
-        context = {
-            'form': form,
-        }
-
-        return render(request, template, context)
-
-    def post(self, request):
-        pass
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 # Create account with custom fields
@@ -79,11 +38,9 @@ class CreateAccountView(FormView):
     """
     model = User
     form_class = CustomCreationForm
-    greeting = 'Create account'
     template_name = 'accounts/create_account.html'
     success_url = '/accounts/create/success/'
 
-    # Send a welcome mail for new accounts
     def _welcome_mail(self, email, first_name):
         html_context = {'first_name': first_name}
         html_message = render_to_string('mail/welcome_mail.html', html_context)
@@ -98,17 +55,24 @@ class CreateAccountView(FormView):
             html_message=html_message
         )
 
-    # Search about forms and formviews
     def form_valid(self, form):
-        email = self.POST['email']
-        first_name = self.POST['fist_name']
+        email = form.cleaned_data['email']
+        first_name = form.cleaned_data['first_name']
 
         self._welcome_mail(email, first_name)
+        self.request.session['done_redirect'] = True
 
         return super().form_valid(form)
 
 
 # Donde create account, redirect to principal page
-class DoneCreateAccountView(LoginRequiredMixin, TemplateView):
+class DoneCreateAccountView(TemplateView):
     template_name = 'accounts/create_account_done.html'
-    login_url = '/accounts/create/'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.session['done_redirect']:
+            return HttpResponseRedirect('/')
+
+        del self.request.session['done_redirect']
+
+        return super().dispatch(request, *args, **kwargs)

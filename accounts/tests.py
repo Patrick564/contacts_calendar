@@ -1,5 +1,5 @@
 # Django imports
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.contrib.auth import authenticate
 
 # App imports
@@ -8,13 +8,15 @@ from .models import User
 
 # Test about custom user model
 class UserTestCase(TestCase):
+    """
+    Test about accounts creation, auth, password change
+    and account with a already registered email.
+    """
 
-    # Create accounts
+    # Accounts for tests
     def setUp(self):
-        """
-        Initial accounts in posterior tests.
-        """
         lia = User.objects.create_user(
+            username='Lia22',
             email='lia@re.com',
             password='aiacos22',
             first_name='Lia',
@@ -27,6 +29,7 @@ class UserTestCase(TestCase):
         lia.save()
 
         rem = User.objects.create_user(
+            username='Rem123',
             email='empresa@coronita.com',
             password='ninguno123',
             first_name='Rem',
@@ -79,3 +82,37 @@ class UserTestCase(TestCase):
         )
 
         self.assertNotEqual(ram, 'empresa@coronita.com', 'User repeated')
+
+
+class PagesLoad(TestCase):
+
+    def setUp(self):
+        lia = User.objects.create_user(
+            username='Lia22',
+            email='lia@re.com',
+            password='aiacos22',
+            first_name='Lia',
+            last_name='Lia',
+            gender='Female',
+            date_of_birth='2011-03-02',
+            phone_number='+51 922 344 135'
+        )
+        lia.is_active = True
+        lia.save()
+
+        self.client = Client()
+
+        session = self.client.session
+        session['done_redirect'] = True
+        session.save()
+
+    def test_accounts_page(self):
+        self.client.login(email='lia@re.com', password='aiacos22')
+
+        create = self.client.get('/accounts/create/')
+        create_done = self.client.get('/accounts/create/done/', follow=True)
+        profile = self.client.get('/accounts/profile/Lia22/')
+
+        self.assertEqual(create.status_code, 200, 'Error create loading')
+        self.assertEqual(create_done.status_code, 200, 'Error done loading')
+        self.assertEqual(profile.status_code, 200, 'Error profile loading')

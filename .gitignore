@@ -3,3 +3,4 @@
 .venv
 .vscode
 *.svg
+config.py

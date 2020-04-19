@@ -84,8 +84,14 @@ class UserTestCase(TestCase):
         self.assertNotEqual(ram, 'empresa@coronita.com', 'User repeated')
 
 
+# Test about accounts/ page load
 class PagesLoad(TestCase):
+    """
+    Test the accounts app page, load with session and
+    a user created.
+    """
 
+    # Initial setup for test
     def setUp(self):
         lia = User.objects.create_user(
             username='Lia22',
@@ -103,16 +109,19 @@ class PagesLoad(TestCase):
         self.client = Client()
 
         session = self.client.session
-        session['done_redirect'] = True
+        session['done_redirect'] = False
         session.save()
 
+    # Test for all pages of accounts app
     def test_accounts_page(self):
         self.client.login(email='lia@re.com', password='aiacos22')
 
         create = self.client.get('/accounts/create/')
         create_done = self.client.get('/accounts/create/done/', follow=True)
         profile = self.client.get('/accounts/profile/Lia22/')
+        update = self.client.get('/accounts/profile/Lia22/update/')
 
         self.assertEqual(create.status_code, 200, 'Error create loading')
         self.assertEqual(create_done.status_code, 200, 'Error done loading')
         self.assertEqual(profile.status_code, 200, 'Error profile loading')
+        self.assertEqual(update.status_code, 200, 'Error update loading')

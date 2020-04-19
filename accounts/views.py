@@ -1,5 +1,5 @@
 # Django imports
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import redirect
 from django.views.generic.edit import FormView, UpdateView
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
@@ -16,21 +16,30 @@ from .models import User
 from .forms import CustomCreationForm
 
 
-def index(request):
-    return render(request, 'accounts/index.html')
-
-
 # Update fields of user
-class UpdateProfileView(LoginRequiredMixin, ListView):
-    pass
+class ProfileView(LoginRequiredMixin, ListView):
+    """
+    Display user data, allowing to modify said data.
+    """
+    model = User
+    template_name = 'accounts/profile.html'
 
 
-# Change with sup class
 # Profile user
-class ProfileView(LoginRequiredMixin, UpdateView):
+class UpdateProfileView(LoginRequiredMixin, UpdateView):
+    """
+    Display user data, only in view mode.
+    """
     login_url = '/accounts/login/'
     model = User
-    fields = ['first_name']
+    fields = [
+        'username',
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'gender',
+        'phone_number'
+    ]
     template_name = 'accounts/account_update_form.html'
 
     def get_object(self, queryset=None):
@@ -83,7 +92,7 @@ class DoneCreateAccountView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         if not self.request.session['done_redirect']:
-            return HttpResponseRedirect('/')
+            return redirect('contact_list:index')
 
         del self.request.session['done_redirect']
 

@@ -2,7 +2,6 @@
 from django.urls import path, include
 
 # Views.py imports
-from . import views
 from .views import (
     CreateAccountView,
     ProfileView,
@@ -11,13 +10,20 @@ from .views import (
 )
 
 
+app_name = 'accounts'
+
+
 urlpatterns = [
-    path('', views.index, name='index'),    # Delete
+    # Auth
     path('', include('django.contrib.auth.urls')),
+
+    # Create
     path('create/', CreateAccountView.as_view(), name='create'),
     path('create/done/', DoneCreateAccountView.as_view(), name='create-done'),
+
+    # Profile
     path('profile/<username>/', ProfileView.as_view(), name='profile'),
     path(
-        'profile/<username>/update', UpdateProfileView.as_view(), name='update'
+        'profile/<username>/update/', UpdateProfileView.as_view(), name='update'  # noqa:E501
     )
 ]

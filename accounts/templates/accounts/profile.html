@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block text %}
+    <p>Profile</p>
+
+    <ul>
+        {% for field in object_list %}
+            <li>
+                {{ field.username }}
+            </li>
+            <li>
+                {{ field.first_name }}
+            </li>
+            <li>
+                {{ field.last_name }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock text %}

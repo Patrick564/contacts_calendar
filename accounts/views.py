@@ -2,6 +2,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic.edit import FormView, UpdateView
 from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
 from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template.loader import render_to_string
@@ -19,6 +20,12 @@ def index(request):
     return render(request, 'accounts/index.html')
 
 
+# Update fields of user
+class UpdateProfileView(LoginRequiredMixin, ListView):
+    pass
+
+
+# Change with sup class
 # Profile user
 class ProfileView(LoginRequiredMixin, UpdateView):
     login_url = '/accounts/login/'
@@ -67,6 +74,11 @@ class CreateAccountView(FormView):
 
 # Donde create account, redirect to principal page
 class DoneCreateAccountView(TemplateView):
+    """
+    Load done create account view and redirect to
+    principal page, if is not the case it also redirect
+    to principal page.
+    """
     template_name = 'accounts/create_account_done.html'
 
     def dispatch(self, request, *args, **kwargs):

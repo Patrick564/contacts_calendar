@@ -1,5 +1,7 @@
 import os
 
+from . import config
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -8,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'wet$tem&_(@y+&@^(u&m@*&+g%29(*6#s*6#b3#&z^86ioy9qe'
+SECRET_KEY = config.secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,9 +31,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 EMAIL_PORT = 587
 
-EMAIL_HOST_USER = 'pvilchez794@gmail.com'
+EMAIL_HOST_USER = config.email_host_user
 
-EMAIL_HOST_PASSWORD = 'phnalsfiolagmmkr'
+EMAIL_HOST_PASSWORD = config.email_host_password
 
 EMAIL_USE_TLS = True
 
@@ -91,14 +93,7 @@ WSGI_APPLICATION = 'contacts_calendar.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'contacts_calendar',
-        'USER': 'root',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    'default': config.default
 }
 
 

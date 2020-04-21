@@ -7,12 +7,11 @@ from .models import User
 
 
 # Test about custom user model
-class UserTestCase(TestCase):
+class UserCustom(TestCase):
     """
     Test about accounts creation, auth, password change
     and account with a already registered email.
     """
-
     # Accounts for tests
     def setUp(self):
         lia = User.objects.create_user(
@@ -85,7 +84,7 @@ class UserTestCase(TestCase):
 
 
 # Test about accounts/ page load
-class PagesLoad(TestCase):
+class AccountsPageLoad(TestCase):
     """
     Test the accounts app page, load with session and
     a user created.

@@ -90,8 +90,7 @@ class PagesLoad(TestCase):
     Test the accounts app page, load with session and
     a user created.
     """
-
-    # Initial setup for test
+    # Account for registered user tests
     def setUp(self):
         lia = User.objects.create_user(
             username='Lia22',
@@ -108,20 +107,36 @@ class PagesLoad(TestCase):
 
         self.client = Client()
 
-        session = self.client.session
-        session['done_redirect'] = False
-        session.save()
+    def test_create_views_anonymous_user(self):
+        create = self.client.get('/accounts/create/', follow=True)
+        create_done = self.client.get('/accounts/create/done/', follow=True)
 
-    # Test for all pages of accounts app
-    def test_accounts_page(self):
+        self.assertEqual(create.status_code, 200, 'Create load error')
+        self.assertRedirects(create_done, '/')
+
+    def test_create_views_registered_user(self):
+        # Login for testing views in user auth case
         self.client.login(email='lia@re.com', password='aiacos22')
 
-        create = self.client.get('/accounts/create/')
+        create = self.client.get('/accounts/create/', follow=True)
         create_done = self.client.get('/accounts/create/done/', follow=True)
-        profile = self.client.get('/accounts/profile/Lia22/')
-        update = self.client.get('/accounts/profile/Lia22/update/')
 
-        self.assertEqual(create.status_code, 200, 'Error create loading')
-        self.assertEqual(create_done.status_code, 200, 'Error done loading')
-        self.assertEqual(profile.status_code, 200, 'Error profile loading')
-        self.assertEqual(update.status_code, 200, 'Error update loading')
+        self.assertRedirects(create, '/')
+        self.assertEqual(create_done.status_code, 200, 'Done load error')
+
+    def test_profile_views_anonymous_user(self):
+        profile = self.client.get('/accounts/profile/Rem2/', follow=True)
+        update = self.client.get('/accounts/profile/Rem2/update/', follow=True)
+
+        self.assertRedirects(profile, '/accounts/login/?next=/accounts/profile/Rem2/')  # noqa:E501
+        self.assertRedirects(update, '/accounts/login/?next=/accounts/profile/Rem2/update/')  # noqa:E501
+
+    def test_profile_views_registered_user(self):
+        # Login for testing views in user auth case
+        self.client.login(email='lia@re.com', password='aiacos22')
+
+        profile = self.client.get('/accounts/profile/Rem2/')
+        update = self.client.get('/accounts/profile/Rem2/update/')
+
+        self.assertEqual(profile.status_code, 200, 'Profile load error')
+        self.assertEqual(update.status_code, 200, 'Update load error')

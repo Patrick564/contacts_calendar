@@ -1,11 +1,15 @@
+# Python imports
 from uuid import uuid4
 
+# Django imports
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
+# Phone Field library import
 from phone_field import PhoneField
 
 
+# Custom create user/superuser funcs
 class AccountUserManager(UserManager):
 
     def _create_user(self, email, password, **extra_fields):
@@ -41,6 +45,7 @@ class AccountUserManager(UserManager):
         )
 
 
+# Custom model User
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -62,6 +67,7 @@ class User(AbstractUser):
         return self.email
 
 
+# Model for contacts data
 class ContactsFields(models.Model):
     user_uuid = models.ForeignKey(
         User,

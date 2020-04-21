@@ -1,6 +1,6 @@
 # Django imports
 from django.shortcuts import redirect
-from django.views.generic.edit import FormView, UpdateView
+from django.views.generic.edit import UpdateView, CreateView
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.core.mail import send_mail
@@ -13,7 +13,7 @@ from contacts_calendar import settings
 
 # App imports
 from .models import User
-from .forms import CustomCreationForm
+from .forms import CustomCreationForm, CustomChangeForm
 
 
 # Update fields of user
@@ -32,14 +32,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
     """
     login_url = '/accounts/login/'
     model = User
-    fields = [
-        'username',
-        'first_name',
-        'last_name',
-        'date_of_birth',
-        'gender',
-        'phone_number'
-    ]
+    form_class = CustomChangeForm
     template_name = 'accounts/account_update_form.html'
 
     def get_object(self, queryset=None):
@@ -47,7 +40,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
 
 
 # Create account with custom fields
-class CreateAccountView(FormView):
+class CreateAccountView(CreateView):
     """
     Create a account and send a welcome mail with
     a link to authenticate and validate the account.
@@ -55,7 +48,7 @@ class CreateAccountView(FormView):
     model = User
     form_class = CustomCreationForm
     template_name = 'accounts/create_account.html'
-    success_url = '/accounts/create/success/'
+    success_url = '/accounts/create/done/'
 
     def _welcome_mail(self, email, first_name):
         html_context = {'first_name': first_name}
@@ -71,12 +64,18 @@ class CreateAccountView(FormView):
             html_message=html_message
         )
 
+    def dispatch(self, request, *args, **kwargs):
+        # If user is auth redirect to principal page
+        if request.user.is_authenticated:
+            return redirect('contact_list:index')
+
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         email = form.cleaned_data['email']
         first_name = form.cleaned_data['first_name']
 
         self._welcome_mail(email, first_name)
-        self.request.session['done_redirect'] = True
 
         return super().form_valid(form)
 
@@ -91,9 +90,8 @@ class DoneCreateAccountView(TemplateView):
     template_name = 'accounts/create_account_done.html'
 
     def dispatch(self, request, *args, **kwargs):
-        if not self.request.session['done_redirect']:
+        # If not user auth redirect to principal page
+        if not request.user.is_authenticated:
             return redirect('contact_list:index')
-
-        del self.request.session['done_redirect']
 
         return super().dispatch(request, *args, **kwargs)

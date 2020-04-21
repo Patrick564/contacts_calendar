@@ -30,7 +30,7 @@ class AccountUserManager(UserManager):
         return self._create_user(
             email=email,
             password=password,
-            is_active=False,
+            is_active=True,
             **extra_fields
         )
 

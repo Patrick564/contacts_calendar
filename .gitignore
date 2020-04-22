@@ -4,3 +4,4 @@
 .vscode
 *.svg
 config.py
+theme/static_src/node_modules/

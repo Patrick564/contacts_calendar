@@ -3,47 +3,47 @@
 {% block title %}Create account{% endblock title %}
 
 {% block text %}
-    <div class="flex flex-col sm:flex-row">
-        <div class="flex-auto"></div>
+    <div class="flex flex-col sm:flex-row p-5 m-5">
+        <div class="flex flex-auto"></div>
 
-        <div class="text-gray-700 text-center bg-gray-400 m-5 p-3">
+        <div class="flex flex-col text-gray-700 text-center bg-gray-400 m-5 p-3">
             <div>
                 <p>Create account</p>
             </div>
             <form class="" method="post">
-                <div class="flex flex-col">
+                <div class="flex flex-col p-3 m-5">
                     {% csrf_token %}
 
-                    <div class="flex flex-col sm:flex-row flex-wrap md:flex-wrap">
-                        <div class="">
+                    <div class="flex flex-col flex-wrap sm:flex-row justify-center h-full">
+                        <div class="w-1/3 p-2">
                             <label class="" for="">
                                 First name
                             </label>
                             <input class="appearance-none bg-gray-200 text-gray-700 m-3 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
                         </div>
 
-                        <div class="">
+                        <div class="w-1/3 p-2">
                             <label for="">
                                 Last name
                             </label>
                             <input class="appearance-none bg-gray-200 text-gray-700 m-3 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
                         </div>
 
-                        <div class="">
+                        <div class="w-1/3 p-2">
                             <label for="">
                                 Date of birth
                             </label>
                             <input class="appearance-none bg-gray-200 text-gray-700 m-3 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
                         </div>
 
-                        <div class="">
+                        <div class="w-1/2 p-2">
                             <label for="">
                                 Gender
                             </label>
                             <input class="appearance-none bg-gray-200 text-gray-700 m-3 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
                         </div>
 
-                        <div class="">
+                        <div class="w-1/2 p-2">
                             <label for="">
                                 Phone number
                             </label>
@@ -51,29 +51,29 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row flex-wrap md:flex-wrap">
-                        <div class="">
+                    <div class="flex flex-col sm:flex-row flex-wrap">
+                        <div class="w-1/2 p-2">
                             <label for="">
                                 Email
                             </label>
                             <input class="appearance-none bg-gray-200 text-gray-700 m-3 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
                         </div>
 
-                        <div class="">
+                        <div class="w-1/2 p-2">
                             <label for="">
                                 Username
                             </label>
                             <input class="appearance-none bg-gray-200 text-gray-700 m-3 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
                         </div>
 
-                        <div class="">
+                        <div class="w-1/2 p-2">
                             <label for="">
                                 Password
                             </label>
                             <input class="appearance-none bg-gray-200 text-gray-700 m-3 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
                         </div>
 
-                        <div class="">
+                        <div class="w-1/2 p-2">
                             <label for="">
                                 Password confirmation
                             </label>
@@ -82,12 +82,14 @@
                     </div>
 
                     <div class="">
-                        <input type="submit" value="Create account">
+                        <button type="button">
+                            Create
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
 
-        <div class="flex-auto"></div>
+        <div class="flex flex-auto"></div>
     </div>
 {% endblock text %}

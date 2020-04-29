@@ -3,108 +3,116 @@
 {% block title %}Create account{% endblock title %}
 
 {% block text %}
-    <div class="flex flex-col sm:flex-row p-3 m-5">
-        <div class="flex flex-1"></div>
+    <div class="flex justify-center m-0 p-0">
 
-        <div class="flex flex-auto flex-col sm:1/2 md:w-1/2 lg:w-1/5 text-gray-700 text-center bg-gray-400 m-5 p-3">
-            <div class="mt-2">
-                <p>Create account</p>
-            </div>
-            <form class="" method="post">
-                <div class="flex flex-col p-2 m-5">
-                    {% csrf_token %}
-
-                    <div class="flex flex-wrap rounded-lg border-solid border-4 m-2 p-3">
-                        <div class="w-full text-left mb-3">
-                            <p>Personal information</p>
-                        </div>
-                        <div class="w-1/2 my-2 p-2 text-left">
-                            <label class="" for="">
-                                First name
-                            </label>
-                            <input class="block appearance-none bg-gray-200 text-gray-700 m-2 ml-0 p-2 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
-                        </div>
-
-                        <div class="w-1/2 my-2 p-2 text-left">
-                            <label class="" for="">
-                                Last name
-                            </label>
-                            <input class="block appearance-none bg-gray-200 text-gray-700 m-2 ml-0 p-2 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
-                        </div>
-
-                        <div class="w-1/2 my-2 p-2 text-left">
-                            <label class="w-full" for="">
-                                Phone number
-                            </label>
-                            <input class="block appearance-none bg-gray-200 text-gray-700 m-2 ml-0 p-2 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
-                        </div>
-
-                        <div class="w-1/5 my-2 p-2 text-left">
-                            <label class="w-full" for="">
-                                Date of birth
-                            </label>
-                            <select class="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 m-2 ml-0 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                                <option>-----</option>
-                                <option>Año 1</option>
-                                <option>Año 2</option>
-                            </select>
-                        </div>
-
-                        <div class="w-1/5 my-2 p-2 text-left">
-                            <label class="" for="">
-                                Gender
-                            </label>
-                            <select class="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 m-2 ml-0 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                                <option>-----</option>
-                                <option>Female</option>
-                                <option>Male</option>
-                            </select>
-                        </div>
-                        
-                    </div>
-
-                    <div class="flex flex-col rounded-lg border-solid border-4 m-2 p-3 sm:flex-row flex-wrap">
-                        <div class="w-full text-left mb-3">
-                            <p>Account</p>
-                        </div>
-                        <div class="w-1/2 p-2 text-left">
-                            <label class="w-full" for="">
-                                Email
-                            </label>
-                            <input class="block appearance-none bg-gray-200 text-gray-700 m-2 ml-0 p-2 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
-                        </div>
-
-                        <div class="w-1/2 p-2 text-left">
-                            <label class="w-full" for="">
-                                Username
-                            </label>
-                            <input class="block appearance-none bg-gray-200 text-gray-700 m-2 ml-0 p-2 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
-                        </div>
-
-                        <div class="w-1/2 p-2 text-left">
-                            <label class="w-full" for="">
-                                Password
-                            </label>
-                            <input class="block appearance-none bg-gray-200 text-gray-700 m-2 ml-0 p-2 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
-                        </div>
-
-                        <div class="w-1/2 p-2 text-left">
-                            <label class="w-full" for="">
-                                Password confirmation
-                            </label>
-                            <input class="block appearance-none bg-gray-200 text-gray-700 m-2 ml-0 p-2 border border-red-500 rounded leading-tight focus:outline-none focus:bg-white" type="text" name="" id="">
-                        </div>
-                    </div>
-
-                    <div class="">
-                        <button type="button">
-                            Create
-                        </button>
-                    </div>
+        <div class="">
+            <div class="flex flex-col text-gray-700 text-center">
+                <div class="mt-4">
+                    <span class="text-sm border-b border-gray-500">
+                        Contacts calendar
+                    </span>
+                    <p class="font-sans text-4xl">
+                        Create account
+                    </p>
                 </div>
-            </form>
+                <form class="" method="post">
+                    <div class="flex flex-col p-2 m-4">
+                        {% csrf_token %}
+
+                        <div class="flex flex-col sm:flex-row flex-wrap shadow-md rounded-lg border-solid border border-gray-600 bg-white m-2 p-3">
+                            <div class="w-full text-left font-serif border-b border-gray-500 mb-3">
+                                <p>Personal information</p>
+                            </div>
+                            <div class="w-1/2 my-2 p-2 text-left">
+                                <label class="font-semibold" for="">
+                                    First name
+                                </label>
+                                <input class="block appearance-none bg-gray-200 text-gray-700 h-8 m-2 ml-0 p-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="" id="">
+                            </div>
+
+                            <div class="w-1/2 my-2 p-2 text-left">
+                                <label class="font-semibold" for="">
+                                    Last name
+                                </label>
+                                <input class="block appearance-none bg-gray-200 text-gray-700 h-8 m-2 ml-0 p-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="" id="">
+                            </div>
+
+                            <div class="w-1/2 my-2 p-2 text-left">
+                                <label class="font-semibold" for="">
+                                    Phone number
+                                </label>
+                                <input class="block appearance-none bg-gray-200 text-gray-700 h-8 m-2 ml-0 p-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="" id="">
+                            </div>
+
+                            <div class="w-1/5 my-2 mr-5 p-2 text-left">
+                                <label class="font-semibold" for="">
+                                    Birth date
+                                </label>
+                                <select class="block appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-8 w-24 m-2 ml-0 p-1 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" id="grid-state">
+                                    <option>-----</option>
+                                    <option>Año 1</option>
+                                    <option>Año 2</option>
+                                </select>
+                            </div>
+
+                            <div class="w-1/5 my-2 p-2 text-left">
+                                <label class="font-semibold" for="">
+                                    Gender
+                                </label>
+                                <select class="block appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-8 w-24 m-2 ml-0 p-1 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" id="grid-state">
+                                    <option>-----</option>
+                                    <option>Female</option>
+                                    <option>Male</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row flex-wrap shadow-md rounded-lg border-solid border border-gray-600 bg-white m-2 p-3">
+                            <div class="w-full text-left font-serif border-b border-gray-500 mb-3">
+                                <p>Account</p>
+                            </div>
+                            <div class="w-1/2 p-2 text-left">
+                                <label class="font-semibold" for="">
+                                    Email
+                                </label>
+                                <input class="block appearance-none bg-gray-200 text-gray-700 h-8 m-2 ml-0 p-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="email" name="" id="">
+                            </div>
+
+                            <div class="w-1/2 p-2 text-left">
+                                <label class="font-semibold" for="">
+                                    Username
+                                </label>
+                                <input class="block appearance-none bg-gray-200 text-gray-700 h-8 m-2 ml-0 p-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="" id="">
+                            </div>
+
+                            <div class="w-1/2 p-2 text-left">
+                                <label class="font-semibold" for="">
+                                    Password
+                                </label>
+                                <input class="block appearance-none bg-gray-200 text-gray-700 h-8 m-2 ml-0 p-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="" id="">
+                            </div>
+
+                            <div class="w-1/2 p-2 text-left">
+                                <label class="font-semibold" for="">
+                                    Password confirmation
+                                </label>
+                                <input class="block appearance-none bg-gray-200 text-gray-700 h-8 m-2 ml-0 p-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="" id="">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between m-2">
+                            <a class="text-blue-500 hover:underline" href="{% url 'accounts:login' %}">
+                                Login
+                            </a>
+                            <button class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded" type="button">
+                                Create
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <div class="flex flex-1"></div>
     </div>
 {% endblock text %}

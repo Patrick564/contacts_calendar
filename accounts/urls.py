@@ -65,8 +65,8 @@ urlpatterns = [
     path('create/done/', DoneCreateAccountView.as_view(), name='create-done'),
 
     # Profile
-    path('profile/<username>/', ProfileView.as_view(), name='profile'),
+    path('profile/<user>/', ProfileView.as_view(), name='profile'),
     path(
-        'profile/<username>/update/', UpdateProfileView.as_view(), name='update'  # noqa:E501
+        'profile/<user>/update/', UpdateProfileView.as_view(), name='update'  # noqa:E501
     ),
 ]

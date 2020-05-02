@@ -18,11 +18,8 @@
                     {% block body_title %}{% endblock %}
                 </p>
             </div>
-            <form class="bg-white shadow-md rounded-lg border-solid border border-gray-600 p-2" method="post">
-                <div class="flex flex-col justify-center max-w-xl">
-                    {% block body_form %}{% endblock body_form %}
-                </div>
-            </form>
+            {% block body_content %}
+            {% endblock body_content %}
         </div>
     </div>
 </body>

@@ -33,7 +33,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
     login_url = '/accounts/login/'
     model = User
     form_class = CustomChangeForm
-    template_name = 'accounts/account_update.html'
+    template_name = 'accounts/update_account.html'
 
     def get_object(self, queryset=None):
         return self.request.user

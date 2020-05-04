@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    <script src="{% static 'contact_list/js/index.js' %}"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="bg-gray-100">
+    <nav class="flex items-center justify-between flex-wrap bg-indigo-500 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <p class="font-semibold text-xl tracking-tight">
+                Contacts Calendar
+            </p>
+        </div>
+
+        <div class="block lg:hidden">
+            <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white" onclick="navBar()">
+                Menu
+            </button>
+        </div>
+
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" id="nav-items">
+            <div class="text-sm lg:flex-grow">
+            </div>
+            <div>
+                <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-green-500 mt-4 lg:mt-0" href="{% url 'contact_list:add' %}">
+                    Add
+                </a>
+            </div>
+            <div>
+                <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-purple-500 mt-4 lg:mt-0" href="#">
+                    Favorite
+                </a>
+            </div>
+            <div>
+                <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-yellow-500 mt-4 lg:mt-0" href="#">
+                    Filed
+                </a>
+            </div>
+            <div>
+                <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-pink-500 mt-4 lg:mt-0" href="#">
+                    Download
+                </a>
+            </div>
+            <div>
+                {% if request.user.is_authenticated %}
+                    <a class="inline-block text-sm ml-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:profile' request.user.username %}">
+                        Settings
+                    </a>
+                {% else %}
+                    <a class="inline-block text-sm ml-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:login' %}">
+                        Login
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    {% block body_content %}
+    {% endblock body_content %}
+</body>
+</html>

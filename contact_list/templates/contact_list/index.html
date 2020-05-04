@@ -1,36 +1,283 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'contact_list/css/index.css' %}">
-    <title>Document</title>
-</head>
-<body>
-    <nav class="navbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a href="#" class="nav-link">A</a>
-                <span class="link-text">Add</span>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">E</a>
-                <span class="link-text">Delete</span>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">O</a>
-                <span class="link-text">Notification</span>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">U</a>
-                <span class="link-text">Profile</span>
-            </li>
-        </ul>
-    </nav>
-    <main>
-        <p>First contact</p>
-        <p>Second contact</p>
-    </main>
-</body>
-</html>
+{% extends 'base/contact_list_base.html' %}
+
+{% block title %}Contacts calendar{% endblock %}
+
+{% block body_content %}
+    <div class="flex justify-center flex-row flex-wrap p-2">
+        <div class="flex flex-col sm:w-full md:w-4/5 lg:w-1/3 m-2 p-3 rounded-lg border-solid border border-gray-600 bg-white">
+            <div class="flex justify-between border-b m-2 pb-2">
+                <div class="">
+                    <button class="font-mono bg-purple-300 border border-purple-300 hover:border-transparent hover:bg-purple-500 rounded p-2">
+                        Favorite
+                    </button>
+                </div>
+                <div class="">
+                    <button class="font-mono bg-yellow-300 border border-yellow-300 hover:border-transparent hover:bg-yellow-500 rounded p-2">
+                        File
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-wrap sm:flex-col md:flex-row py-2">
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block text-lg font-serif" for="">
+                        First name
+                    </label>
+                    <p class="font-light italic">
+                        Patrick Esteven
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block text-lg font-serif" for="">
+                        Last name
+                    </label>
+                    <p class="font-light italic">
+                        Vilchez Marengo
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-full p-2">
+                    <label class="block text-lg font-serif" for="">
+                        Email
+                    </label>
+                    <p class="font-light italic">
+                        pvilchez794@gmail.com
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block text-lg font-serif" for="">
+                        Phone number
+                    </label>
+                    <p class="font-light italic">
+                        922344135
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block text-lg font-serif" for="">
+                        Birth date
+                    </label>
+                    <p class="font-light italic">
+                        ----/--/--
+                    </p>
+                </div>
+            </div>
+            <div class="flex justify-between border-t m-2 pt-2">
+                <div>
+                    <button class="font-mono bg-red-300 border-red-300 hover:border-transparent hover:bg-red-500 rounded p-2">
+                        Delete
+                    </button>
+                </div>
+                <div class="">
+                    <a class="block font-mono bg-teal-300 border-teal-300 hover:border-transparent hover:bg-teal-500 rounded p-2" href="{% url 'contact_list:update' %}">
+                        Update
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% comment %} Delete below {% endcomment %}
+        <div class="flex flex-col sm:w-full md:w-4/5 lg:w-1/3 m-2 p-3 rounded-lg border-solid border border-gray-600 bg-white">
+            <div class="flex justify-between border-b m-2 pb-2">
+                <div class="">
+                    <button class="bg-purple-300 border border-purple-300 hover:border-transparent hover:bg-purple-500 rounded p-2">
+                        Favorite
+                    </button>
+                </div>
+                <div class="">
+                    <button class="bg-yellow-300 border border-yellow-300 hover:border-transparent hover:bg-yellow-500 rounded p-2">
+                        File
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-wrap sm:flex-col md:flex-row py-2">
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        First name
+                    </label>
+                    <p class="italic">
+                        Patrick Esteven
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        Last name
+                    </label>
+                    <p class="italic">
+                        Vilchez Marengo
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-full p-2">
+                    <label class="block" for="">
+                        Email
+                    </label>
+                    <p class="italic">
+                        pvilchez794@gmail.com
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        Phone number
+                    </label>
+                    <p class="italic">
+                        922344135
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        Birth date
+                    </label>
+                    <p class="italic">
+                        ----/--/--
+                    </p>
+                </div>
+            </div>
+            <div class="flex justify-between border-t m-2 pt-2">
+                <div>
+                    <button class="bg-red-300 border-red-300 hover:border-transparent hover:bg-red-500 rounded p-2">
+                        Delete
+                    </button>
+                </div>
+                <div class="">
+                    <button class="bg-teal-300 border-teal-300 hover:border-transparent hover:bg-teal-500 rounded p-2">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col sm:w-full md:w-4/5 lg:w-1/3 m-2 p-3 rounded-lg border-solid border border-gray-600 bg-white">
+            <div class="flex justify-between border-b m-2 pb-2">
+                <div class="">
+                    <button class="bg-purple-300 border border-purple-300 hover:border-transparent hover:bg-purple-500 rounded p-2">
+                        Favorite
+                    </button>
+                </div>
+                <div class="">
+                    <button class="bg-yellow-300 border border-yellow-300 hover:border-transparent hover:bg-yellow-500 rounded p-2">
+                        File
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-wrap sm:flex-col md:flex-row py-2">
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        First name
+                    </label>
+                    <p class="italic">
+                        Patrick Esteven
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        Last name
+                    </label>
+                    <p class="italic">
+                        Vilchez Marengo
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-full p-2">
+                    <label class="block" for="">
+                        Email
+                    </label>
+                    <p class="italic">
+                        pvilchez794@gmail.com
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        Phone number
+                    </label>
+                    <p class="italic">
+                        922344135
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        Birth date
+                    </label>
+                    <p class="italic">
+                        ----/--/--
+                    </p>
+                </div>
+            </div>
+            <div class="flex justify-between border-t m-2 pt-2">
+                <div>
+                    <button class="bg-red-300 border-red-300 hover:border-transparent hover:bg-red-500 rounded p-2">
+                        Delete
+                    </button>
+                </div>
+                <div class="">
+                    <button class="bg-teal-300 border-teal-300 hover:border-transparent hover:bg-teal-500 rounded p-2">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col sm:w-full md:w-4/5 lg:w-1/3 m-2 p-3 rounded-lg border-solid border border-gray-600 bg-white">
+            <div class="flex justify-between border-b m-2 pb-2">
+                <div class="">
+                    <button class="bg-purple-300 border border-purple-300 hover:border-transparent hover:bg-purple-500 rounded p-2">
+                        Favorite
+                    </button>
+                </div>
+                <div class="">
+                    <button class="bg-yellow-300 border border-yellow-300 hover:border-transparent hover:bg-yellow-500 rounded p-2">
+                        File
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-wrap sm:flex-col md:flex-row py-2">
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        First name
+                    </label>
+                    <p class="italic">
+                        Patrick Esteven
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        Last name
+                    </label>
+                    <p class="italic">
+                        Vilchez Marengo
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-full p-2">
+                    <label class="block" for="">
+                        Email
+                    </label>
+                    <p class="italic">
+                        pvilchez794@gmail.com
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        Phone number
+                    </label>
+                    <p class="italic">
+                        922344135
+                    </p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2">
+                    <label class="block" for="">
+                        Birth date
+                    </label>
+                    <p class="italic">
+                        ----/--/--
+                    </p>
+                </div>
+            </div>
+            <div class="flex justify-between border-t m-2 pt-2">
+                <div>
+                    <button class="bg-red-300 border-red-300 hover:border-transparent hover:bg-red-500 rounded p-2">
+                        Delete
+                    </button>
+                </div>
+                <div class="">
+                    <button class="bg-teal-300 border-teal-300 hover:border-transparent hover:bg-teal-500 rounded p-2">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+{% endblock body_content %}

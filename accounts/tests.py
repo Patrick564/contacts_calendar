@@ -139,3 +139,17 @@ class AccountsPageLoad(TestCase):
 
         self.assertEqual(profile.status_code, 200, 'Profile load error')
         self.assertEqual(update.status_code, 200, 'Update load error')
+
+    def test_context(self):
+        login = self.client.get('/accounts/login/')
+        password_change = self.client.get('/accounts/password_change/')
+        password_reset = self.client.get('/accounts/password_reset/')
+
+        print('Login')
+        print(login.context)
+
+        print('Pwd Change')
+        print(password_change.context)
+
+        print('Pwd Reset')
+        print(password_reset.context)

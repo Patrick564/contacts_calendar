@@ -1,21 +1,76 @@
 {% extends 'base/accounts_base.html' %}
 
-{% block title %} Profile {% endblock title %}
+{% block title %} Profile {% endblock %}
 
-{% block text %}
-    <p>Profile</p>
+{% block body_title %}Profile{% endblock %}
 
-    <ul>
-        {% for field in object_list %}
-            <li>
-                {{ field.username }}
-            </li>
-            <li>
-                {{ field.first_name }}
-            </li>
-            <li>
-                {{ field.last_name }}
-            </li>
-        {% endfor %}
-    </ul>
-{% endblock text %}
+{% block body_content %}
+    <form class="bg-white shadow-md rounded-lg border-solid border border-gray-600 p-2" method="post">
+        <div class="flex flex-col justify-center max-w-xl">
+            {% csrf_token %}
+
+            <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
+                <div class="w-full text-left font-serif border-b border-gray-500 mb-3">
+                    <p>Personal information</p>
+                </div>
+                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
+                    <label class="block font-semibold" for="">
+                        First name
+                    </label>
+                    <p>Test text</p>
+                </div>
+                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
+                    <label class="block font-semibold" for="">
+                        Last name
+                    </label>
+                    <p>Test text</p>
+                </div>
+                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
+                    <label class="block font-semibold" for="">
+                        Phone number
+                    </label>
+                    <p>Test text</p>
+                </div>
+                <div class="1/5 my-2 p-2 text-left">
+                    <label class="block font-semibold" for="">
+                        Birth date
+                    </label>
+                    <p>Test text</p>
+                </div>
+                <div class="1/5 my-2 p-2 text-left">
+                    <label class="block font-semibold" for="">
+                        Gender
+                    </label>
+                    <p>Test text</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
+                <div class="w-full text-left font-serif border-b border-gray-500 mb-3">
+                    <p>Account</p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                    <label class="block font-semibold" for="">
+                        Email
+                    </label>
+                    <p>Test text</p>
+                </div>
+                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                    <label class="block font-semibold" for="">
+                        Username
+                    </label>
+                    <p>Test text</p>
+                </div>
+            </div>
+
+            <div class="flex justify-between m-4">
+                <a class="text-blue-500 hover:underline ml-3" href="{% url 'contact_list:index' %}">
+                    Back
+                </a>
+                <a class="text-blue-500 hover:underline mr-3" href="{% url 'accounts:update' request.user.username %}">
+                    Update
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock body_content %}

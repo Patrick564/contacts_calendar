@@ -1,5 +1,6 @@
 # Python imports
 from uuid import uuid4
+from datetime import date
 
 # Django imports
 from django.db import models
@@ -55,11 +56,25 @@ class User(AbstractUser):
     ]
 
     user_uuid = models.UUIDField(default=uuid4, editable=False)
-    username = models.CharField(blank=True, unique=False, max_length=50)
+    username = models.CharField(
+        blank=True,
+        unique=True,
+        max_length=50,
+        default='NoNameUser'
+    )
     email = models.EmailField(unique=True, max_length=254)
-    date_of_birth = models.DateField(auto_now=False, auto_now_add=False)
-    gender = models.CharField(choices=GENDER_CHOICES, max_length=15)
-    phone_number = PhoneField()
+    date_of_birth = models.DateField(
+        auto_now=False,
+        auto_now_add=False,
+        blank=True,
+        default=date.today
+    )
+    gender = models.CharField(
+        choices=GENDER_CHOICES,
+        max_length=15,
+        blank=True
+    )
+    phone_number = PhoneField(blank=True)
 
     objects = AccountUserManager()
 

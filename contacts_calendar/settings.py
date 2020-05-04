@@ -15,7 +15,7 @@ SECRET_KEY = config.secret_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['testserver', '127.0.0.1']
+ALLOWED_HOSTS = ['testserver', '127.0.0.1', '192.168.1.9']
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'accounts',
     'contacts',
     'contact_list',
+    'theme',
 
     # Installed libraries
     'phone_field',
+    'tailwind',
 
     # Django apps
     'django.contrib.admin',
@@ -142,6 +144,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TAILWIND_APP_NAME = 'theme'
+
+# Route of npm/node in your path
+NPM_BIN_PATH = r"C:/Program Files/nodejs/npm.cmd"
+
+
+# Redirect conf
 
 LOGIN_REDIRECT_URL = '/'
 

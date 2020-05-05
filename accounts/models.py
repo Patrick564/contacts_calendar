@@ -88,8 +88,15 @@ class ContactsFields(models.Model):
         User,
         on_delete=models.CASCADE
     )
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    phone_number = models.IntegerField()
-    contact_email = models.EmailField(max_length=254)
-    date_of_birth = models.DateField(auto_now=False, auto_now_add=False)
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=50, blank=True)
+    phone_number = PhoneField(blank=True)
+    contact_email = models.EmailField(max_length=254, blank=True)
+    date_of_birth = models.DateField(
+        auto_now=False,
+        auto_now_add=False,
+        blank=True
+    )
+
+    def __str__(self):
+        return (self.first_name + self.last_name)

@@ -84,7 +84,7 @@ class User(AbstractUser):
 
 # Model for contacts data
 class ContactsFields(models.Model):
-    user_uuid = models.ForeignKey(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE
     )

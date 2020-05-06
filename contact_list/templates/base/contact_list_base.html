@@ -25,38 +25,47 @@
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" id="nav-items">
             <div class="text-sm lg:flex-grow">
             </div>
-            <div>
-                <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-green-500 mt-4 lg:mt-0" href="{% url 'contact_list:add' %}">
-                    Add
-                </a>
-            </div>
-            <div>
-                <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-purple-500 mt-4 lg:mt-0" href="#">
-                    Favorite
-                </a>
-            </div>
-            <div>
-                <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-yellow-500 mt-4 lg:mt-0" href="#">
-                    Filed
-                </a>
-            </div>
-            <div>
-                <a class="inline-flex items-center text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-pink-500 mt-4 lg:mt-0" href="#">
-                    <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-                    <span>Download</span>
-                </a>
-            </div>
-            <div>
-                {% if request.user.is_authenticated %}
+            {% if request.user.is_authenticated %}
+                <div>
+                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-green-500 mt-4 lg:mt-0" href="{% url 'contact_list:add' %}">
+                        Add
+                    </a>
+                </div>
+                <div>
+                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-purple-500 mt-4 lg:mt-0" href="#">
+                        Favorite
+                    </a>
+                </div>
+                <div>
+                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-yellow-500 mt-4 lg:mt-0" href="#">
+                        Filed
+                    </a>
+                </div>
+                <div>
+                    <a class="inline-flex items-center text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-pink-500 mt-4 lg:mt-0" href="#">
+                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                        <span>Download</span>
+                    </a>
+                </div>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                <div>
                     <a class="inline-block text-sm ml-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:profile' request.user.username %}">
                         Settings
                     </a>
-                {% else %}
-                    <a class="inline-block text-sm ml-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:login' %}">
+                </div>
+            {% else %}
+                <div>
+                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:login' %}">
                         Login
                     </a>
-                {% endif %}
-            </div>
+                </div>
+                <div>
+                    <a class="inline-block text-sm ml-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:create' %}">
+                        Create account
+                    </a>
+                </div>
+            {% endif %}
         </div>
     </nav>
     {% block body_content %}

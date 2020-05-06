@@ -10,10 +10,10 @@ app_name = 'contact_list'
 
 urlpatterns = [
     # Index
-    path('', views.index, name='index'),
+    path('', Index.as_view(), name='index'),
 
     # Add
-    path('add/', Index.as_view(), name='add'),
+    path('add/', views.add, name='add'),
 
     # Update
     path('update/', views.update, name='update'),

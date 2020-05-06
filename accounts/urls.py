@@ -26,7 +26,7 @@ urlpatterns = [
         'logout/', auth_views.LogoutView.as_view(
             next_page='/',
             template_name='registration/logout.html'
-        )
+        ), name='logout'
     ),
     path(
         'password_change/', auth_views.PasswordChangeView.as_view(

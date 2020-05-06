@@ -63,12 +63,17 @@
                 </div>
             </div>
 
-            <div class="flex justify-between m-4">
-                <a class="text-blue-500 hover:underline ml-3" href="{% url 'contact_list:index' %}">
+            <div class="flex justify-between mx-4 border-t border-gray-500">
+                <a class="text-blue-500 hover:underline ml-3 mt-3" href="{% url 'contact_list:index' %}">
                     Back
                 </a>
-                <a class="text-blue-500 hover:underline mr-3" href="{% url 'accounts:update' request.user.username %}">
+                <a class="text-blue-500 hover:underline mr-3 mt-3" href="{% url 'accounts:update' request.user.username %}">
                     Update
+                </a>
+            </div>
+            <div class="flex justify-between m-4 border-t border-gray-500">
+                <a class="text-blue-500 hover:underline ml-3 mt-3" href="{% url 'accounts:logout' %}">
+                    Logout
                 </a>
             </div>
         </div>

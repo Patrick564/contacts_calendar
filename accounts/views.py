@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.contrib.auth import authenticate, login
 
 # Settings import
 from contacts_calendar import settings
@@ -23,6 +24,12 @@ class ProfileView(LoginRequiredMixin, ListView):
     """
     model = User
     template_name = 'accounts/profile.html'
+    context_object_name = 'user_data'
+
+    def get_queryset(self):
+        user = User.objects.filter(email=self.request.user.email)
+
+        return user
 
 
 # Profile user
@@ -51,7 +58,12 @@ class CreateAccountView(CreateView):
     success_url = '/accounts/create/done/'
 
     def _welcome_mail(self, email, first_name):
-        html_context = {'first_name': first_name}
+        """
+        Send a welcome email to new users.
+        """
+        html_context = {
+            'first_name': first_name
+        }
         html_message = render_to_string('mail/welcome_mail.html', html_context)
         html_plain_text = strip_tags(html_message)
 
@@ -73,9 +85,13 @@ class CreateAccountView(CreateView):
 
     def form_valid(self, form):
         email = form.cleaned_data['email']
+        password = form.cleaned_data['password1']
         first_name = form.cleaned_data['first_name']
 
         self._welcome_mail(email, first_name)
+
+        login_user = authenticate(email=email, password=password)
+        login(self.request, login_user)
 
         return super().form_valid(form)
 

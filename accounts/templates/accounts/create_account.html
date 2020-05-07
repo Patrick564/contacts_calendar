@@ -6,10 +6,15 @@
 
 {% block body_content %}
     <form class="bg-white shadow-md rounded-lg border-solid border border-gray-600 p-2" method="post">
-        <div class="flex flex-col justify-center max-w-xl">
-            {% csrf_token %}
+        {% csrf_token %}
 
+        <div class="flex flex-col justify-center max-w-xl">
             <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
+                <div class="mb-1" role="alert">
+                    <span class="text-red-600 italic">
+                        {{ form.non_field_errors }}
+                    </span>
+                </div>
                 <div class="w-full text-left font-serif border-b border-gray-500 mb-3">
                     <p>Personal information</p>
                 </div>
@@ -17,39 +22,58 @@
                     <label class="block font-semibold" for="">
                         First name
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="" id="">
+                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="first_name">
+                    <div class="mt-1" role="alert">
+                        <span class="text-red-600 italic">
+                            {{ form.first_name.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
                     <label class="block font-semibold" for="">
                         Last name
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="" id="">
+                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="last_name" id="last_name">
+                    <div class="mt-1" role="alert">
+                        <span class="text-red-600 italic">
+                            {{ form.last_name.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
                     <label class="block font-semibold" for="">
                         Phone number
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="" id="">
+                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="phone_number" id="phone_number">
                 </div>
                 <div class="1/5 my-2 p-2 text-left">
                     <label class="block font-semibold" for="">
                         Birth date
                     </label>
-                    <select class="appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" id="">
-                        <option>-----</option>
-                        <option>Año 1</option>
-                        <option>Año 2</option>
+                    <select class="appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-26 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="birth_of_date" id="birth_of_date">
+                        <option select>1990-01-01</option>
+                        <option>1998-02-03</option>
+                        <option>1997-04-02</option>
                     </select>
+                    <div class="mt-1" role="alert">
+                        <span class="text-red-600 italic">
+                            {{ form.date_of_birth.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="1/5 my-2 p-2 text-left">
                     <label class="block font-semibold" for="">
                         Gender
                     </label>
-                    <select class="appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" id="">
-                        <option>-----</option>
-                        <option>Female</option>
-                        <option>Male</option>
+                    <select class="appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="gender" id="gender">
+                        <option value="F" select>Female</option>
+                        <option value="M">Male</option>
                     </select>
+                    <div class="mt-1" role="alert">
+                        <span class="text-red-600 italic">
+                            {{ form.gender.errors }}
+                        </span>
+                    </div>
                 </div>
             </div>
 
@@ -61,33 +85,53 @@
                     <label class="block font-semibold" for="">
                         Email
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="email" name="" id="">
+                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" id="email">
+                    <div class="mt-1" role="alert">
+                        <span class="text-red-600 italic">
+                            {{ form.email.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="sm:w-full md:w-1/2 p-2 text-left">
                     <label class="block font-semibold" for="">
                         Username
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="" id="">
+                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="username">
+                    <div class="mt-1" role="alert">
+                        <span class="text-red-600 italic">
+                            {{ form.username.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="sm:w-full md:w-1/2 p-2 text-left">
                     <label class="block font-semibold" for="">
                         Password
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="" id="">
+                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="password1" id="password1">
+                    <div class="mt-1" role="alert">
+                        <span class="text-red-600 italic">
+                            {{ form.password1.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="sm:w-full md:w-1/2 p-2 text-left">
                     <label class="block font-semibold" for="">
                         Password confirmation
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="" id="">
+                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="password2" id="password2">
+                    <div class="mt-1" role="alert">
+                        <span class="text-red-600 italic">
+                            {{ form.password2.errors }}
+                        </span>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex justify-between m-4">
-                <a class="text-blue-500 hover:underline ml-3" href="{% url 'accounts:login' %}">
+            <div class="flex justify-between border-t border-gray-500 m-4">
+                <a class="block font-mono bg-blue-300 border-blue-300 hover:border-transparent hover:bg-blue-500 rounded mt-3 p-2" href="{% url 'accounts:login' %}">
                     Login
                 </a>
-                <button class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white mr-3 py-2 px-4 border border-green-500 hover:border-transparent rounded" type="button">
+                <button class="block font-mono bg-green-300 border-green-300 hover:border-transparent hover:bg-green-500 rounded mt-3 p-2" type="submit">
                     Create
                 </button>
             </div>

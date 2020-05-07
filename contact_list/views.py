@@ -32,7 +32,9 @@ class Index(ListView):
     template_name = 'contact_list/index.html'
 
     def get_queryset(self):
-        return ContactsFields.objects.filter(user=self.request.user.id)
+        all_contacts = ContactsFields.objects.filter(user=self.request.user.id)
+
+        return all_contacts
 
 
 class Add(CreateView):

@@ -5,11 +5,12 @@
 {% block body_content %}
     <div class="flex justify-center flex-row flex-wrap p-2">
         <div class="flex flex-col sm:w-full md:w-4/5 lg:w-1/3 m-2 p-3 rounded-lg border-solid border border-gray-600 bg-white">
+
             <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
-                <div class="w-full text-left font-serif border-b border-gray-500 mb-3">
+                <div class="w-full text-left text-xl font-serif border-b border-gray-500 mb-3">
                     <p>App settings</p>
                 </div>
-                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
                     <label class="block text-lg font-serif" for="">
                         Personal information
                     </label>
@@ -17,7 +18,7 @@
                         Profile
                     </a>
                 </div>
-                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
                     <label class="block text-lg font-serif" for="">
                         Dark theme
                     </label>
@@ -28,10 +29,10 @@
             </div>
 
             <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
-                <div class="w-full text-left font-serif border-b border-gray-500 mb-3">
+                <div class="w-full text-left text-xl font-serif border-b border-gray-500 mb-3">
                     <p>Account</p>
                 </div>
-                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
                     <label class="block text-lg font-serif" for="">
                         Email
                     </label>
@@ -39,11 +40,11 @@
                         Change email
                     </a>
                 </div>
-                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
                     <label class="block text-lg font-serif" for="">
                         Password
                     </label>
-                    <a class="block text-purple-500 font-mono hover:underline rounded p-2" href="#">
+                    <a class="block text-purple-500 font-mono hover:underline rounded p-2" href="{% url 'accounts:password-change' %}">
                         Change password
                     </a>
                 </div>

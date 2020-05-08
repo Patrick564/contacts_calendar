@@ -1,7 +1,7 @@
 # Django imports
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.views.generic.edit import UpdateView, CreateView
-from django.views.generic.base import TemplateView, View
+from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -18,10 +18,11 @@ from .forms import CustomCreationForm, CustomChangeForm
 
 
 # Settings of account
-class SettingsView(View):
-
-    def get(self, request):
-        return render(request, 'accounts/settings.html')
+class SettingsView(TemplateView):
+    """
+    View for settings of account.
+    """
+    template_name = 'accounts/settings.html'
 
 
 # Update fields of user
@@ -104,6 +105,7 @@ class CreateAccountView(CreateView):
 
 
 # Donde create account, redirect to principal page
+
 class DoneCreateAccountView(TemplateView):
     """
     Load done create account view and redirect to

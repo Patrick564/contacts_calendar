@@ -23,23 +23,24 @@ urlpatterns = [
         ), name='logout'
     ),
     path(
-        'password_change/', auth_views.PasswordChangeView.as_view(
+        'password-change/', auth_views.PasswordChangeView.as_view(
+            success_url='/accounts/password-change/done/',
             template_name='registration/password_change.html'
         ), name='password-change'
     ),
     path(
-        'password_change/done/', auth_views.PasswordChangeDoneView.as_view(
+        'password-change/done/', auth_views.PasswordChangeDoneView.as_view(
             template_name='registration/password_change_done.html'
         ), name='password-change-done'
     ),
     path(
-        'password_reset/', auth_views.PasswordResetView.as_view(
+        'password-reset/', auth_views.PasswordResetView.as_view(
             email_template_name='mail/password_reset_email.html',
             template_name='registration/password_reset.html'
         ), name='password-reset'
     ),
     path(
-        'password_reset/done/', auth_views.PasswordResetDoneView.as_view(
+        'password-reset/done/', auth_views.PasswordResetDoneView.as_view(
             template_name='registration/password_reset_done.html'
         ), name='password-reset-done'
     ),

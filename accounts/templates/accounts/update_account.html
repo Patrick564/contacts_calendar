@@ -10,42 +10,42 @@
             {% csrf_token %}
 
             <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
-                <div class="w-full text-left font-serif border-b border-gray-500 mb-3">
+                <div class="w-full text-left text-xl font-serif border-b border-gray-500 mb-3">
                     <p>Personal information</p>
                 </div>
                 <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
-                    <label class="block font-semibold" for="">
+                    <label class="block text-lg font-serif" for="">
                         First name
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="" value="{{ user.first_name }}">
+                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="" value="{{ user.first_name }}">
                 </div>
                 <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
-                    <label class="block font-semibold" for="">
+                    <label class="block text-lg font-serif" for="">
                         Last name
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="last_name" id="" value="{{ user.last_name }}">
+                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="last_name" id="" value="{{ user.last_name }}">
                 </div>
                 <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
-                    <label class="block font-semibold" for="">
+                    <label class="block text-lg font-serif" for="">
                         Phone number
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="phone_number" id="" value="{{ user.phone_number }}">
+                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="phone_number" id="" value="{{ user.phone_number }}">
                 </div>
                 <div class="1/5 my-2 p-2 text-left">
-                    <label class="block font-semibold" for="">
+                    <label class="block text-lg font-serif" for="">
                         Birth date
                     </label>
-                    <select class="appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="date_of_birth" id="" value="{{ user.date_of_birth }}">
+                    <select class="font-sans appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="date_of_birth" id="" value="{{ user.date_of_birth }}">
                         <option>-----</option>
                         <option>Año 1</option>
                         <option>Año 2</option>
                     </select>
                 </div>
                 <div class="1/5 my-2 p-2 text-left">
-                    <label class="block font-semibold" for="">
+                    <label class="block text-lg font-serif" for="">
                         Gender
                     </label>
-                    <select class="appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="gender" id="" value="{{ user.gender }}">
+                    <select class="font-sans appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="gender" id="" value="{{ user.gender }}">
                         <option>-----</option>
                         <option>Female</option>
                         <option>Male</option>
@@ -54,14 +54,14 @@
             </div>
 
             <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
-                <div class="w-full text-left font-serif border-b border-gray-500 mb-3">
+                <div class="w-full text-left text-xl font-serif border-b border-gray-500 mb-3">
                     <p>Account</p>
                 </div>
                 <div class="sm:w-full md:w-1/2 p-2 text-left">
-                    <label class="block font-semibold" for="">
+                    <label class="block text-lg font-serif" for="">
                         Username
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="" value="{{ user.username }}">
+                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="" value="{{ user.username }}">
                 </div>
             </div>
 

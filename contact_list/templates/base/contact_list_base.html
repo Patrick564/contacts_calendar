@@ -50,8 +50,13 @@
             {% endif %}
             {% if request.user.is_authenticated %}
                 <div>
-                    <a class="inline-block text-sm ml-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:profile' request.user.username %}">
-                        Settings-Profile
+                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:settings' %}">
+                        Settings
+                    </a>
+                </div>
+                <div>
+                    <a class="inline-block text-sm ml-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-red-500 mt-4 lg:mt-0" href="{% url 'accounts:logout'%}">
+                        Logout
                     </a>
                 </div>
             {% else %}

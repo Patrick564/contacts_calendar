@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from accounts.models import ContactsFields
+from accounts.models import ContactField
 
 
-admin.site.register(ContactsFields)
+admin.site.register(ContactField)

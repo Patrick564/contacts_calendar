@@ -11,7 +11,7 @@
         <div class="flex flex-col justify-center max-w-xl">
             <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
                 <div class="mb-1" role="alert">
-                    <span class="text-red-600 italic">
+                    <span class="text-sm text-red-600 italic">
                         {{ form.non_field_errors }}
                     </span>
                 </div>
@@ -24,7 +24,7 @@
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="first_name">
                     <div class="mt-1" role="alert">
-                        <span class="text-red-600 italic">
+                        <span class="text-sm text-red-600 italic">
                             {{ form.first_name.errors }}
                         </span>
                     </div>
@@ -35,7 +35,7 @@
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="last_name" id="last_name">
                     <div class="mt-1" role="alert">
-                        <span class="text-red-600 italic">
+                        <span class="text-sm text-red-600 italic">
                             {{ form.last_name.errors }}
                         </span>
                     </div>
@@ -50,13 +50,9 @@
                     <label class="block font-semibold" for="">
                         Birth date
                     </label>
-                    <select class="appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-26 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="birth_of_date" id="birth_of_date">
-                        <option select>1990-01-01</option>
-                        <option>1998-02-03</option>
-                        <option>1997-04-02</option>
-                    </select>
+                    <input class="font-sans text-sm appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="date" name="birth_of_date" id="birth_of_date">
                     <div class="mt-1" role="alert">
-                        <span class="text-red-600 italic">
+                        <span class="text-sm text-red-600 italic">
                             {{ form.date_of_birth.errors }}
                         </span>
                     </div>
@@ -70,7 +66,7 @@
                         <option value="M">Male</option>
                     </select>
                     <div class="mt-1" role="alert">
-                        <span class="text-red-600 italic">
+                        <span class="text-sm text-red-600 italic">
                             {{ form.gender.errors }}
                         </span>
                     </div>
@@ -87,7 +83,7 @@
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" id="email">
                     <div class="mt-1" role="alert">
-                        <span class="text-red-600 italic">
+                        <span class="text-sm text-red-600 italic">
                             {{ form.email.errors }}
                         </span>
                     </div>
@@ -98,7 +94,7 @@
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="username">
                     <div class="mt-1" role="alert">
-                        <span class="text-red-600 italic">
+                        <span class="text-sm text-red-600 italic">
                             {{ form.username.errors }}
                         </span>
                     </div>
@@ -109,7 +105,7 @@
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="password1" id="password1">
                     <div class="mt-1" role="alert">
-                        <span class="text-red-600 italic">
+                        <span class="text-sm text-red-600 italic">
                             {{ form.password1.errors }}
                         </span>
                     </div>
@@ -120,7 +116,7 @@
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="password2" id="password2">
                     <div class="mt-1" role="alert">
-                        <span class="text-red-600 italic">
+                        <span class="text-sm text-red-600 italic">
                             {{ form.password2.errors }}
                         </span>
                     </div>

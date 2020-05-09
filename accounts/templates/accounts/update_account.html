@@ -10,6 +10,11 @@
             {% csrf_token %}
 
             <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
+                <div class="mb-1" role="alert">
+                    <span class="text-sm text-red-600 italic">
+                        {{ form.non_field_errors }}
+                    </span>
+                </div>
                 <div class="w-full text-left text-xl font-serif border-b border-gray-500 mb-3">
                     <p>Personal information</p>
                 </div>
@@ -18,38 +23,58 @@
                         First name
                     </label>
                     <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="" value="{{ user.first_name }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.first_name.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
                     <label class="block text-lg font-serif" for="">
                         Last name
                     </label>
                     <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="last_name" id="" value="{{ user.last_name }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.last_name.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
                     <label class="block text-lg font-serif" for="">
                         Phone number
                     </label>
-                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="phone_number" id="" value="{{ user.phone_number }}">
+                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="tel" name="phone_number_0" id="" value="{{ user.phone_number }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.phone_number_0.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="1/5 my-2 p-2 text-left">
                     <label class="block text-lg font-serif" for="">
                         Birth date
                     </label>
-                    <select class="font-sans appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="date_of_birth" id="" value="{{ user.date_of_birth }}">
-                        <option>-----</option>
-                        <option>Año 1</option>
-                        <option>Año 2</option>
-                    </select>
+                    <input class="font-sans text-sm appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="date" name="date_of_birth" id="" value="{{ user.date_of_birth|date:'Y-m-d' }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.date_of_birth.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="1/5 my-2 p-2 text-left">
                     <label class="block text-lg font-serif" for="">
                         Gender
                     </label>
                     <select class="font-sans appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="gender" id="" value="{{ user.gender }}">
-                        <option>-----</option>
-                        <option>Female</option>
-                        <option>Male</option>
+                        <option value="F" select>Female</option>
+                        <option value="M">Male</option>
                     </select>
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.gender.errors }}
+                        </span>
+                    </div>
                 </div>
             </div>
 
@@ -62,6 +87,11 @@
                         Username
                     </label>
                     <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="" value="{{ user.username }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.username.errors }}
+                        </span>
+                    </div>
                 </div>
             </div>
 
@@ -70,7 +100,7 @@
                     <a class="block font-mono bg-blue-300 border-blue-300 hover:border-transparent hover:bg-blue-500 rounded mt-3 p-2" href="{% url 'accounts:profile' request.user.username %}">
                         Cancel
                     </a>
-                    <button class="block font-mono bg-green-300 border-green-300 hover:border-transparent hover:bg-green-500 rounded mt-3 p-2" type="button">
+                    <button class="block font-mono bg-green-300 border-green-300 hover:border-transparent hover:bg-green-500 rounded mt-3 p-2" type="submit">
                         Update
                     </button>
                 </div>

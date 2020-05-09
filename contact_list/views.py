@@ -4,15 +4,7 @@ from django.views.generic.edit import UpdateView, CreateView
 from django.views.generic.list import ListView
 
 # App imports
-from accounts.models import ContactsFields
-
-
-def index(request):
-    a = ContactsFields.objects.all()
-
-    return render(request, 'contact_list/index.html', {
-        'all_contacts': a
-    })
+from accounts.models import ContactField
 
 
 def add(request):
@@ -27,12 +19,12 @@ class Index(ListView):
     """
     Show all contacts of the current user.
     """
-    model = ContactsFields
+    model = ContactField
     context_object_name = 'all_contacts'
     template_name = 'contact_list/index.html'
 
     def get_queryset(self):
-        all_contacts = ContactsFields.objects.filter(user=self.request.user.id)
+        all_contacts = ContactField.objects.filter(user=self.request.user.id)
 
         return all_contacts
 

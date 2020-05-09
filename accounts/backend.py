@@ -1,11 +1,11 @@
-from django.contrib.auth.backends import BaseBackend
+from django.contrib.auth.backends import ModelBackend
 
 from .models import User
 
 
-class AuthBackend(BaseBackend):
+class EmailBackend(ModelBackend):
 
-    def authenticate(self, request, email, password):
+    def authenticate(self, request, email, password, **kwargs):
         if email and password:
             try:
                 user = User.objects.get(email=email)

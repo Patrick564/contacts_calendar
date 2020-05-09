@@ -1,5 +1,6 @@
 # Django imports
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.forms.widgets import DateInput
 
 # App imports
 from .models import User

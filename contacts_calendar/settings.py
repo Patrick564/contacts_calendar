@@ -20,7 +20,7 @@ ALLOWED_HOSTS = ['testserver', '127.0.0.1', '192.168.1.6']
 AUTH_USER_MODEL = 'accounts.User'
 
 AUTHENTICATION_BACKENDS = (
-    'accounts.backend.AuthBackend',
+    'accounts.backend.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 

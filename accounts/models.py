@@ -1,12 +1,12 @@
 # Python imports
 from uuid import uuid4
-from datetime import date
+from datetime import date, datetime
 
 # Django imports
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
-# Phone Field library import
+# Library imports
 from phone_field import PhoneField
 
 
@@ -49,7 +49,7 @@ class AccountUserManager(UserManager):
 # Custom model User
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
     GENDER_CHOICES = [
         ('F', 'Female'),
         ('M', 'Male'),
@@ -57,17 +57,14 @@ class User(AbstractUser):
 
     user_uuid = models.UUIDField(default=uuid4, editable=False)
     username = models.CharField(
-        blank=True,
         unique=True,
-        max_length=50,
-        default='NoNameUser'
+        max_length=50
     )
     email = models.EmailField(unique=True, max_length=254)
     date_of_birth = models.DateField(
         auto_now=False,
         auto_now_add=False,
-        blank=True,
-        default=date.today
+        blank=True
     )
     gender = models.CharField(
         choices=GENDER_CHOICES,
@@ -83,12 +80,12 @@ class User(AbstractUser):
 
 
 # Model for contacts data
-class ContactsFields(models.Model):
+class ContactField(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE
     )
-    first_name = models.CharField(max_length=50, blank=True)
+    first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50, blank=True)
     phone_number = PhoneField(blank=True)
     contact_email = models.EmailField(max_length=254, blank=True)
@@ -99,4 +96,9 @@ class ContactsFields(models.Model):
     )
 
     def __str__(self):
-        return (self.first_name + self.last_name)
+        today = datetime.now()
+        date_id = str(today.year) + str(today.month) + str(today.day)
+        time_id = str(today.hour) + str(today.minute) + str(today.second)
+        str_id = str(self.user_id) + str(self.id) + date_id + time_id
+
+        return str_id

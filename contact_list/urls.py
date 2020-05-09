@@ -3,14 +3,13 @@ from django.urls import path
 
 # App imports
 from . import views
-from .views import Index
 
 
 app_name = 'contact_list'
 
 urlpatterns = [
     # Index
-    path('', Index.as_view(), name='index'),
+    path('', views.Index.as_view(), name='index'),
 
     # Add
     path('add/', views.add, name='add'),

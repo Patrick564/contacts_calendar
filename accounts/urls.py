@@ -9,7 +9,8 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    # Auth
+
+    # Login
     path(
         'login/', auth_views.LoginView.as_view(
             redirect_authenticated_user=True,
@@ -22,6 +23,8 @@ urlpatterns = [
             template_name='registration/logout.html'
         ), name='logout'
     ),
+
+    # Password change
     path(
         'password-change/', auth_views.PasswordChangeView.as_view(
             success_url='/accounts/password-change/done/',
@@ -33,6 +36,8 @@ urlpatterns = [
             template_name='registration/password_change_done.html'
         ), name='password-change-done'
     ),
+
+    # Password reset
     path(
         'password-reset/', auth_views.PasswordResetView.as_view(
             email_template_name='mail/password_reset_email.html',

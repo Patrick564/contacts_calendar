@@ -7,7 +7,6 @@ from django.core.mail import send_mail
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from django.contrib.auth import authenticate, login
 
 # Settings import
 from contacts_calendar import settings
@@ -49,6 +48,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = CustomChangeForm
     template_name = 'accounts/update_account.html'
+    success_url = '/accounts/settings/'
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -63,7 +63,7 @@ class CreateAccountView(CreateView):
     model = User
     form_class = CustomCreationForm
     template_name = 'accounts/create_account.html'
-    success_url = '/accounts/create/done/'
+    success_url = '/accounts/login/'
 
     def _welcome_mail(self, email, first_name):
         """
@@ -93,19 +93,14 @@ class CreateAccountView(CreateView):
 
     def form_valid(self, form):
         email = form.cleaned_data['email']
-        password = form.cleaned_data['password1']
         first_name = form.cleaned_data['first_name']
 
         self._welcome_mail(email, first_name)
-
-        login_user = authenticate(email=email, password=password)
-        login(self.request, login_user)
 
         return super().form_valid(form)
 
 
 # Donde create account, redirect to principal page
-
 class DoneCreateAccountView(TemplateView):
     """
     Load done create account view and redirect to

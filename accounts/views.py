@@ -19,7 +19,7 @@ from .forms import CustomCreationForm, CustomChangeForm
 # Settings of account
 class SettingsView(TemplateView):
     """
-    View for settings of account.
+    Settings of account; profile, change password and email.
     """
     template_name = 'accounts/settings.html'
 
@@ -27,7 +27,7 @@ class SettingsView(TemplateView):
 # Update fields of user
 class ProfileView(LoginRequiredMixin, ListView):
     """
-    Display user data, allowing to modify said data.
+    Display user data in view mode.
     """
     model = User
     template_name = 'accounts/profile.html'
@@ -42,7 +42,7 @@ class ProfileView(LoginRequiredMixin, ListView):
 # Profile user
 class UpdateProfileView(LoginRequiredMixin, UpdateView):
     """
-    Display user data, only in view mode.
+    Allows modifying user by ommiting email and password.
     """
     login_url = '/accounts/login/'
     model = User
@@ -57,22 +57,18 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
 # Create account with custom fields
 class CreateAccountView(CreateView):
     """
-    Create a account and send a welcome mail with
-    a link to authenticate and validate the account.
+    Create a account and send a welcome mail.
     """
     model = User
     form_class = CustomCreationForm
     template_name = 'accounts/create_account.html'
     success_url = '/accounts/login/'
 
-    def _welcome_mail(self, email, first_name):
+    def _welcome_mail(self, email):
         """
         Send a welcome email to new users.
         """
-        html_context = {
-            'first_name': first_name
-        }
-        html_message = render_to_string('mail/welcome_mail.html', html_context)
+        html_message = render_to_string('mail/welcome_mail.html')
         html_plain_text = strip_tags(html_message)
 
         send_mail(
@@ -93,9 +89,8 @@ class CreateAccountView(CreateView):
 
     def form_valid(self, form):
         email = form.cleaned_data['email']
-        first_name = form.cleaned_data['first_name']
 
-        self._welcome_mail(email, first_name)
+        self._welcome_mail(email)
 
         return super().form_valid(form)
 

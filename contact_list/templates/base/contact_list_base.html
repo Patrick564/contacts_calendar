@@ -12,7 +12,9 @@
     <nav class="flex items-center justify-between flex-wrap bg-indigo-500 p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
             <p class="font-semibold text-xl tracking-tight">
-                Contacts Calendar
+                <a href="{% url 'contact_list:index' %}">
+                    Contacts Calendar
+                </a>
             </p>
         </div>
 
@@ -27,7 +29,7 @@
             </div>
             {% if request.user.is_authenticated %}
                 <div>
-                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-green-500 mt-4 lg:mt-0" href="{% url 'contact_list:add' %}">
+                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-green-500 mt-4 lg:mt-0" href="{% url 'contacts:add' %}">
                         Add
                     </a>
                 </div>

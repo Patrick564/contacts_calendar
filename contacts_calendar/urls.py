@@ -9,4 +9,5 @@ urlpatterns = [
     # Page sites
     path('', include('contact_list.urls')),
     path('accounts/', include('accounts.urls')),
+    path('contacts/', include('contacts.urls')),
 ]

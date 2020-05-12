@@ -1,6 +1,6 @@
 # Python imports
 from uuid import uuid4
-from datetime import date, datetime
+from datetime import datetime
 
 # Django imports
 from django.db import models

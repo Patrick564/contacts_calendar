@@ -9,5 +9,8 @@ app_name = 'contacts'
 
 urlpatterns = [
     # Add
-    path('add/', views.AddContact.as_view(), name='add'),
+    path('add/', views.AddView.as_view(), name='add'),
+
+    # Delete
+    path('delete/<username>-<pk>/', views.DeleteView.as_view(), name='delete'),
 ]

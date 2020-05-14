@@ -94,6 +94,7 @@ class ContactField(models.Model):
         auto_now_add=False,
         blank=True
     )
+    favorite = models.BooleanField(default=False)
 
     def __str__(self):
         today = datetime.now()

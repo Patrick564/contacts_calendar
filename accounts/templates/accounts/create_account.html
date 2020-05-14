@@ -45,6 +45,11 @@
                         Phone number
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="phone_number" id="phone_number">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.phone_number_0.errors }}
+                        </span>
+                    </div>
                 </div>
                 <div class="1/5 my-2 p-2 text-left">
                     <label class="block text-lg font-serif" for="">

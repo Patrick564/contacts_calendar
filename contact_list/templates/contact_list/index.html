@@ -82,44 +82,5 @@
                 </div>
             {% endfor %}
         </div>
-
-        <div class="flex justify-between m-4 p-3">
-            {% if page_obj.has_previous %}
-                <div class="">
-                    <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 px-4 py-2" href="?page=1">
-                        First
-                    </a>
-                    <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 px-4 py-2" href="?page={{ page_obj.previous_page_number }}">
-                        Previus
-                    </a>
-                </div>
-            {% else %}
-                <div class="">
-                    <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 cursor-not-allowed px-4 py-2"s>
-                        Previus
-                    </a>
-                </div>
-            {% endif %}
-
-            <div>
-                <span>
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                </span>
-            </div>
-
-            {% if page_obj.has_next %}
-                <div class="">
-                    <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 px-4 py-2" href="?page={{ page_obj.next_page_number }}">
-                        Next
-                    </a> 
-                </div>
-            {% else %}
-                <div class="">
-                    <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 cursor-not-allowed px-4 py-2"s>
-                        Next
-                    </a>
-                </div>
-            {% endif %}
-        </div>
     </div>
 {% endblock body_content %}

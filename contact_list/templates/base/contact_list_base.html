@@ -8,7 +8,7 @@
     <script src="{% static 'contact_list/js/index.js' %}"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
-<body class="relative bg-gray-100">
+<body class="relative bg-gray-200">
     <nav class="fixed top-0 left-0 right-0 flex items-center justify-between flex-wrap bg-indigo-500 p-4">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
             <p class="font-semibold text-xl tracking-tight">
@@ -22,7 +22,7 @@
                 Menu
             </button>
         </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" id="nav-items">
+        <div class="block w-full flex-grow hidden lg:flex lg:items-center lg:w-auto" id="nav-items">
             <div class="text-sm lg:flex-grow">
             </div>
             {% if request.user.is_authenticated %}
@@ -73,25 +73,22 @@
     </nav>
 
     <main class="min-h-screen pt-20 pb-32">
-        {% block body_content %}
-        {% endblock body_content %}
+        {% block body_main %}
+        {% endblock body_main %}
     </main>
 
-    <footer class="absolute bottom-0 w-full bg-blue-300">
+    <footer class="absolute bottom-0 w-full bg-gray-800 text-white">
             {% if request.user.is_authenticated %}
-                <div class="flex justify-between m-3 p-2">
+                <div class="flex justify-between border-b border-indigo-500 m-3 p-2 pb-4">
                     {% if page_obj.has_previous %}
                         <div class="">
-                            <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 px-4 py-2" href="?page=1">
-                                First
-                            </a>
-                            <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 px-4 py-2" href="?page={{ page_obj.previous_page_number }}">
+                            <a class="bg-gray-800 hover:bg-indigo-500 rounded m-3 px-4 py-2" href="?page={{ page_obj.previous_page_number }}">
                                 Previus
                             </a>
                         </div>
                     {% else %}
                         <div class="">
-                            <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 cursor-not-allowed px-4 py-2"s>
+                            <a class="bg-gray-800 hover:bg-indigo-500 rounded m-3 cursor-not-allowed px-4 py-2"s>
                                 Previus
                             </a>
                         </div>
@@ -105,13 +102,13 @@
 
                     {% if page_obj.has_next %}
                         <div class="">
-                            <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 px-4 py-2" href="?page={{ page_obj.next_page_number }}">
+                            <a class="bgray-300 hover:bg-indigo-500 rounded m-3 px-4 py-2" href="?page={{ page_obj.next_page_number }}">
                                 Next
                             </a> 
                         </div>
                     {% else %}
                         <div class="">
-                            <a class="bg-blue-300 hover:bg-blue-500 rounded m-3 cursor-not-allowed px-4 py-2"s>
+                            <a class="bgray-300 hover:bg-indigo-500 rounded m-3 cursor-not-allowed px-4 py-2"s>
                                 Next
                             </a>
                         </div>

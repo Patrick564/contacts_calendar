@@ -22,7 +22,7 @@ class Index(ListView):
     model = ContactField
     context_object_name = 'all_contacts'
     template_name = 'contact_list/index.html'
-    paginate_by = 4
+    paginate_by = 3
 
     def get_queryset(self):
         all_contacts = ContactField.objects.filter(user=self.request.user.id)

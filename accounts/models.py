@@ -12,6 +12,10 @@ from phone_field import PhoneField
 
 # Custom create user/superuser funcs
 class AccountUserManager(UserManager):
+    """
+    Class UserManager extended to create users by replacing
+    username with email.
+    """
 
     def _create_user(self, email, password, **extra_fields):
         if not email:
@@ -48,6 +52,10 @@ class AccountUserManager(UserManager):
 
 # Custom model User
 class User(AbstractUser):
+    """
+    User model with customized fields.
+    """
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     GENDER_CHOICES = [
@@ -81,6 +89,10 @@ class User(AbstractUser):
 
 # Model for contacts data
 class ContactField(models.Model):
+    """
+    Model for contacts, FK to User model.
+    """
+
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE

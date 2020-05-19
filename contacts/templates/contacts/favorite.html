@@ -1,21 +1,25 @@
 {% extends 'base/contact_list_base.html' %}
 
-{% block title %}Delete - Contacts calendar{% endblock %}
+{% block title %}Contacts calendar{% endblock %}
 
 {% block body_main %}
     <form method="post">
         {% csrf_token %}
+        <input type="hidden" name="favorite" value="True">
 
-        <div class="flex justify-center flex-row flex-wrap p-2">
-            <div class="flex flex-col sm:w-full md:w-4/5 lg:w-1/3 m-2 p-3 rounded-lg border-solid border border-gray-600 bg-white">
-                <div class="flex justify-between border-b m-2 pb-2">
-                    <p>
-                        Contact
-                    </p>
+        <div class="grid sm:grid-cols-1 lg:grid-cols-3 gap-4 m-4 p-3">
+            <div class="grid lg:col-start-2 border border-gray-600 rounded-lg bg-gray-100">
+
+                <div class="flex justify-between border-b border-gray-500 m-4 pb-3">
+                    <div class="">
+                        <p>
+                            Favorite contact
+                        </p>
+                    </div>
                 </div>
 
-                <div class="flex flex-wrap sm:flex-col md:flex-row m-2 p-3">
-                    <div class="sm:w-full md:w-1/2 my-2 p-2">
+                <div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4 m-3">
+                    <div class="ml-2">
                         <label class="block text-lg font-serif" for="">
                             First name
                         </label>
@@ -23,7 +27,7 @@
                             {{ object.first_name }}
                         </p>
                     </div>
-                    <div class="sm:w-full md:w-1/2 my-2 p-2">
+                    <div class="ml-2">
                         <label class="block text-lg font-serif" for="">
                             Last name
                         </label>
@@ -31,7 +35,7 @@
                             {{ object.last_name }}
                         </p>
                     </div>
-                    <div class="sm:w-full md:w-full my-2 p-2">
+                    <div class="md:row-span-2 md:col-span-2 ml-2">
                         <label class="block text-lg font-serif" for="">
                             Email
                         </label>
@@ -39,7 +43,7 @@
                             {{ object.contact_email }}
                         </p>
                     </div>
-                    <div class="sm:w-full md:w-1/2 my-2 p-2">
+                    <div class="ml-2">
                         <label class="block text-lg font-serif" for="">
                             Phone number
                         </label>
@@ -47,25 +51,31 @@
                             {{ object.phone_number }}
                         </p>
                     </div>
-                    <div class="sm:w-full md:w-1/2 my-2 p-2">
+                    <div class="ml-2">
                         <label class="block text-lg font-serif" for="">
-                            Birth date
+                            Date of Birth
                         </label>
                         <p class="font-light italic">
-                            {{ object.date_of_birth|date:'d/m/Y' }}
+                            {{ object.date_of_birth }}
                         </p>
                     </div>
                 </div>
 
-                <div class="flex justify-between border-t m-2 pt-2">
-                    <a class="block font-mono bg-red-300 border-red-300 hover:border-transparent hover:bg-red-500 rounded p-2" href="{% url 'contact_list:index' %}">
-                        Cancel
-                    </a>
-                    <button class="block font-mono bg-teal-300 border-teal-300 hover:border-transparent hover:bg-teal-500 rounded p-2" type="submit" >
-                        Delete
-                    </button>
+                <div class="flex justify-between border-t border-gray-500 m-3 pt-3">
+                    <div class="">
+                        <a class="block font-mono bg-transparent border-2 border-dashed border-red-400 hover:border-transparent hover:bg-red-400 rounded p-2" href="{% url 'contact_list:index' %}">
+                            Cancel
+                        </a>
+                    </div>
+                    <div class="">
+                        <button class="block font-mono bg-green-200 border-2 border-green-400 hover:border-transparent hover:bg-green-400 rounded p-2" type="submit">
+                            Add favorite
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </div>
+
     </form>
 {% endblock body_main %}

@@ -3,88 +3,94 @@
 {% block title %}Contacts calendar{% endblock %}
 
 {% block body_main %}
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-4 p-3">
-        {% for contact in all_contacts %}
-            <div class="grid border border-gray-600 rounded-lg bg-gray-100">
+    {% if all_contacts %}
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-4 p-3">
+            {% for contact in all_contacts %}
+                <div class="grid border border-gray-600 rounded-lg bg-gray-100">
+                    <div class="flex justify-between border-b border-gray-500 m-3 pb-3">
+                        <div class="">
+                            {% if contact.favorite %}
+                                <a class="block font-mono bg-purple-200 border-2 border-purple-400 hover:border-transparent hover:bg-purple-400 rounded p-2" href="{% url 'contacts:favorite' contact.id %}">
+                                    Favorite
+                                </a>
+                            {% else %}
+                                <a class="block font-mono bg-transparent border-2 border-double border-purple-400 hover:border-transparent hover:bg-purple-400 rounded p-2" href="{% url 'contacts:favorite' contact.id %}">
+                                    Add favorite
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="">
+                            <button class="block font-mono bg-transparent border-2 border-double border-yellow-400 hover:border-transparent hover:bg-yellow-400 rounded p-2">
+                                File
+                            </button>
+                        </div>
+                    </div>
 
-                <div class="flex justify-between border-b border-gray-500 m-3 pb-3">
-                    <div class="">
-                        {% if contact.favorite %}
-                            <a class="block font-mono bg-purple-200 border-2 border-purple-400 hover:border-transparent hover:bg-purple-400 rounded p-2" href="{% url 'contacts:favorite' contact.id %}">
-                                Favorite
+                    <div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4 m-3">
+                        <div class="ml-2">
+                            <label class="block text-lg font-serif" for="">
+                                First name
+                            </label>
+                            <p class="font-light italic">
+                                {{ contact.first_name }}
+                            </p>
+                        </div>
+                        <div class="ml-2">
+                            <label class="block text-lg font-serif" for="">
+                                Last name
+                            </label>
+                            <p class="font-light italic">
+                                {{ contact.last_name }}
+                            </p>
+                        </div>
+                        <div class="md:row-span-2 md:col-span-2 ml-2">
+                            <label class="block text-lg font-serif" for="">
+                                Email
+                            </label>
+                            <p class="font-light italic">
+                                {{ contact.contact_email }}
+                            </p>
+                        </div>
+                        <div class="ml-2">
+                            <label class="block text-lg font-serif" for="">
+                                Phone number
+                            </label>
+                            <p class="font-light italic">
+                                {{ contact.phone_number }}
+                            </p>
+                        </div>
+                        <div class="ml-2">
+                            <label class="block text-lg font-serif" for="">
+                                Date of Birth
+                            </label>
+                            <p class="font-light italic">
+                                {{ contact.date_of_birth }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between border-t border-gray-500 m-3 pt-3">
+                        <div class="">
+                            <a class="block font-mono bg-transparent border-2 border-dashed border-red-400 hover:border-transparent hover:bg-red-400 rounded p-2" href="{% url 'contacts:delete' contact.id %}">
+                                Delete
                             </a>
-                        {% else %}
-                            <a class="block font-mono bg-transparent border-2 border-double border-purple-400 hover:border-transparent hover:bg-purple-400 rounded p-2" href="{% url 'contacts:favorite' contact.id %}">
-                                Add favorite
+                        </div>
+                        <div class="">
+                            <a class="block font-mono bg-teal-200 border-double border-2 border-teal-400 hover:border-transparent hover:bg-teal-400 rounded p-2" href="{% url 'contacts:update' %}">
+                                Update
                             </a>
-                        {% endif %}
-                    </div>
-                    <div class="">
-                        <button class="block font-mono bg-transparent border-2 border-double border-yellow-400 hover:border-transparent hover:bg-yellow-400 rounded p-2">
-                            File
-                        </button>
+                        </div>
                     </div>
                 </div>
-
-                <div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4 m-3">
-                    <div class="ml-2">
-                        <label class="block text-lg font-serif" for="">
-                            First name
-                        </label>
-                        <p class="font-light italic">
-                            {{ contact.first_name }}
-                        </p>
-                    </div>
-                    <div class="ml-2">
-                        <label class="block text-lg font-serif" for="">
-                            Last name
-                        </label>
-                        <p class="font-light italic">
-                            {{ contact.last_name }}
-                        </p>
-                    </div>
-                    <div class="md:row-span-2 md:col-span-2 ml-2">
-                        <label class="block text-lg font-serif" for="">
-                            Email
-                        </label>
-                        <p class="font-light italic">
-                            {{ contact.contact_email }}
-                        </p>
-                    </div>
-                    <div class="ml-2">
-                        <label class="block text-lg font-serif" for="">
-                            Phone number
-                        </label>
-                        <p class="font-light italic">
-                            {{ contact.phone_number }}
-                        </p>
-                    </div>
-                    <div class="ml-2">
-                        <label class="block text-lg font-serif" for="">
-                            Date of Birth
-                        </label>
-                        <p class="font-light italic">
-                            {{ contact.date_of_birth }}
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex justify-between border-t border-gray-500 m-3 pt-3">
-                    <div class="">
-                        <a class="block font-mono bg-transparent border-2 border-dashed border-red-400 hover:border-transparent hover:bg-red-400 rounded p-2" href="{% url 'contacts:delete' contact.id %}">
-                            Delete
-                        </a>
-                    </div>
-                    <div class="">
-                        <a class="block font-mono bg-teal-200 border-2 border-teal-400 hover:border-transparent hover:bg-teal-400 rounded p-2" href="{% url 'contacts:update' %}">
-                            Update
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        {% empty %}
-            <div>No contacts</div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="grid justify-center">
+            {% if request.user.is_authenticated %}
+                add new contacts
+            {% else %}
+                register
+            {% endif %}
+        </div>
+    {% endif %}
 {% endblock body_main %}

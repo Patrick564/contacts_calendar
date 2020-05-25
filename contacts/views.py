@@ -19,12 +19,17 @@ class ContactAddView(LoginRequiredMixin, CreateView):
 
 
 class ContactUpdateView(View):
-
+    """
+    Update contact fields.
+    """
     def get(self, request):
         return render(request, 'contacts/update.html')
 
 
 class ContactFavoriteView(LoginRequiredMixin, UpdateView):
+    """
+    Add a contact as favorite contact.
+    """
     login_url = '/accounts/login/'
     model = ContactField
     fields = [

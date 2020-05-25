@@ -9,8 +9,8 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body class="relative bg-gray-200">
-    <nav class="fixed top-0 left-0 right-0 flex items-center justify-between flex-wrap bg-indigo-500 p-4">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <nav class="fixed top-0 left-0 right-0 flex items-center justify-between flex-wrap bg-teal-500 p-4">
+        <div class="text-black flex items-center flex-shrink-0 mr-6">
             <p class="font-semibold text-xl tracking-tight">
                 <a href="{% url 'contact_list:index' %}">
                     Contacts Calendar
@@ -42,12 +42,6 @@
                     </a>
                 </div>
                 <div>
-                    <a class="inline-flex items-center text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-pink-500 mt-4 lg:mt-0" href="#">
-                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-                        <span>Download</span>
-                    </a>
-                </div>
-                <div>
                     <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:settings' %}">
                         Settings
                     </a>
@@ -72,7 +66,7 @@
         </div>
     </nav>
 
-    <main class="min-h-screen pt-20 pb-32">
+    <main class="min-h-screen pt-20 pb-40">
         {% block body_main %}
         {% endblock body_main %}
     </main>
@@ -115,14 +109,16 @@
                 {% endif %}
             </div>
         {% endif %}
-        <div class="text-right">
+        <div class="flex items-center justify-between m-3 px-5 py-3">
             <div class="">
-                <p>
-                    <a href="https://github.com/Patrick564" target="_blank">GitHub</a>
+                <p class="text-gray-300 text-sm">
+                    Copyright &copy 2020 Contacts calendar
                 </p>
-                <p>
-                    Linkedin
-                </p>
+            </div>
+            <div class="">
+                <a href="https://github.com/Patrick564/contacts_calendar/" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32"><path style="fill: #ffffff" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                </a>
             </div>
         </div>
     </footer>

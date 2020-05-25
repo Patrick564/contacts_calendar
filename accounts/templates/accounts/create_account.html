@@ -4,21 +4,23 @@
 
 {% block body_title %}Create account{% endblock %}
 
-{% block body_content %}
-    <form class="bg-white shadow-md rounded-lg border-solid border border-gray-600 p-2" method="post">
-        {% csrf_token %}
+{% block body_main %}
+    <div class="grid justify-center m-3">
+        <form method="post">
+            {% csrf_token %}
 
-        <div class="flex flex-col justify-center max-w-xl">
-            <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
-                <div class="mb-1" role="alert">
-                    <span class="text-sm text-red-600 italic">
-                        {{ form.non_field_errors }}
-                    </span>
-                </div>
-                <div class="w-full text-left text-xl font-serif border-b border-gray-500 mb-3">
+            <div class="mb-1" role="alert">
+                <span class="text-sm text-red-600 italic">
+                    {{ form.non_field_errors }}
+                </span>
+            </div>
+
+            <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-3 gap-4 border border-gray-500 rounded-lg m-2 p-3">
+                <div class="font-serif text-xl md:row-span-1 md:col-span-3 border-b border-gray-500">
                     <p>Personal information</p>
                 </div>
-                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
+
+                <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         First name
                     </label>
@@ -29,7 +31,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
+
+                <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         Last name
                     </label>
@@ -40,7 +43,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="sm:w-full md:w-1/2 my-2 p-2 text-left">
+
+                <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         Phone number
                     </label>
@@ -51,7 +55,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="1/5 my-2 p-2 text-left">
+
+                <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         Birth date
                     </label>
@@ -62,7 +67,8 @@
                         </span>
                     </div>
                 </div>
-                <div class="1/5 my-2 p-2 text-left">
+
+                <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         Gender
                     </label>
@@ -78,11 +84,11 @@
                 </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row flex-wrap m-2 p-3">
-                <div class="w-full text-left text-xl font-serif border-b border-gray-500 mb-3">
+            <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-3 gap-4 border border-gray-500 rounded-lg m-2 p-3">
+                <div class="font-serif text-left text-xl md:row-span-1 md:col-span-3 border-b border-gray-500">
                     <p>Account</p>
                 </div>
-                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         Email
                     </label>
@@ -93,7 +99,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         Username
                     </label>
@@ -104,7 +110,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         Password
                     </label>
@@ -115,7 +121,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="sm:w-full md:w-1/2 p-2 text-left">
+                <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         Password confirmation
                     </label>
@@ -128,14 +134,14 @@
                 </div>
             </div>
 
-            <div class="flex justify-between border-t border-gray-500 m-4">
-                <a class="block font-mono bg-blue-300 border-blue-300 hover:border-transparent hover:bg-blue-500 rounded mt-3 p-2" href="{% url 'accounts:login' %}">
+            <div class="flex justify-between m-2">
+                <a class="block text-purple-500 font-mono bg-transparent hover:underline rounded mt-3 p-2" href="{% url 'accounts:login' %}">
                     Login
                 </a>
                 <button class="block font-mono bg-green-300 border-green-300 hover:border-transparent hover:bg-green-500 rounded mt-3 p-2" type="submit">
                     Create
                 </button>
             </div>
-        </div>
+        </form>
     </div>
-{% endblock body_content %}
+{% endblock body_main %}

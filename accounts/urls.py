@@ -19,7 +19,7 @@ urlpatterns = [
     ),
     path(
         'logout/', auth_views.LogoutView.as_view(
-            next_page='/',
+            next_page=None,
             template_name='registration/logout.html'
         ), name='logout'
     ),

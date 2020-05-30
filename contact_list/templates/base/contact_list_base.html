@@ -32,12 +32,12 @@
                     </a>
                 </div>
                 <div>
-                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-purple-500 mt-4 lg:mt-0" href="#">
+                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-purple-500 mt-4 lg:mt-0" href="{% url 'contacts:favorites' %}">
                         Favorites
                     </a>
                 </div>
                 <div>
-                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-yellow-500 mt-4 lg:mt-0" href="#">
+                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-yellow-500 mt-4 lg:mt-0" href="{% url 'contacts:filed' %}">
                         Filed
                     </a>
                 </div>
@@ -48,18 +48,18 @@
                 </div>
                 <div>
                     <a class="inline-block text-sm ml-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-red-500 mt-4 lg:mt-0" href="{% url 'accounts:logout'%}">
-                        Logout
+                        Sign out
                     </a>
                 </div>
             {% else %}
                 <div>
-                    <a class="inline-block text-sm mx-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:login' %}">
-                        Login
+                    <a class="inline-block text-white leading-none rounded hover:text-gray-400 lg:mt-0 mt-4 mx-3 px-2 py-2" href="{% url 'accounts:login' %}">
+                        Sign in
                     </a>
                 </div>
                 <div>
-                    <a class="inline-block text-sm ml-3 px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:bg-teal-500 mt-4 lg:mt-0" href="{% url 'accounts:create' %}">
-                        Create account
+                    <a class="inline-block text-white leading-none border rounded hover:text-gray-400 hover:border-gray-400 lg:mt-0 mt-4 mr-3 px-2 py-2" href="{% url 'accounts:create' %}">
+                        Sing up
                     </a>
                 </div>
             {% endif %}
@@ -112,7 +112,10 @@
         <div class="flex items-center justify-between m-3 px-5 py-3">
             <div class="">
                 <p class="text-gray-300 text-sm">
-                    Copyright &copy 2020 Contacts calendar
+                    Copyright &copy 2020
+                </p>
+                <p class="text-gray-400 text-sm">
+                    v0.1.0
                 </p>
             </div>
             <div class="">

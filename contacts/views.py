@@ -1,49 +1,101 @@
 # Django imports
-from django.views.generic import CreateView, View, DeleteView, UpdateView
+from django.views.generic import CreateView, DeleteView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 
 # App imports
 from accounts.models import ContactField
 from accounts.forms import AddContactForm
 
 
-class ContactAddView(LoginRequiredMixin, CreateView):
+class AddContactView(LoginRequiredMixin, CreateView):
     """
     Add a new contact.
     """
     model = ContactField
     form_class = AddContactForm
-    template_name = 'contacts/add.html'
+    template_name = 'contacts/add_contact.html'
     success_url = '/'
 
 
-class ContactUpdateView(View):
+class UpdateContactView(LoginRequiredMixin, UpdateView):
     """
-    Update contact fields.
+    Update fields of the selected contact.
     """
-    def get(self, request):
-        return render(request, 'contacts/update.html')
+    model = ContactField
+    fields = [
+        'first_name',
+        'last_name',
+        'contact_email',
+        'phone_number',
+        'date_of_birth'
+    ]
+    template_name = 'contacts/update_contact.html'
+    success_url = '/'
 
 
-class ContactFavoriteView(LoginRequiredMixin, UpdateView):
+class AddFavoriteView(LoginRequiredMixin, UpdateView):
     """
-    Add a contact as favorite contact.
+    Add a contact to the user's favorite list.
     """
-    login_url = '/accounts/login/'
     model = ContactField
     fields = [
         'favorite'
     ]
-    template_name = 'contacts/favorite.html'
+    template_name = 'contacts/add_favorite.html'
     success_url = '/'
 
 
-class ContactDeleteView(LoginRequiredMixin, DeleteView):
+class FavoriteListView(LoginRequiredMixin, ListView):
     """
-    Delete a contact.
+    Displays the list of favorite contacts.
     """
-    login_url = '/accounts/login/'
     model = ContactField
-    template_name = 'contacts/delete.html'
+    context_object_name = 'favorite_contacts'
+    template_name = 'contacts/favorite_list.html'
+    # paginate_by = 9
+
+    def get_queryset(self):
+        favorite_contacts = ContactField.objects.filter(
+            user=self.request.user.id,
+            favorite=True
+        )
+
+        return favorite_contacts
+
+
+class AddFiledView(LoginRequiredMixin, UpdateView):
+    """
+    Add a contact to the user's filed list.
+    """
+    model = ContactField
+    fields = [
+        'filed'
+    ]
+    template_name = 'contacts/add_filed.html'
+    success_url = '/'
+
+
+class FiledListView(LoginRequiredMixin, ListView):
+    """
+    Displays the list of filed contacts.
+    """
+    model = ContactField
+    context_object_name = 'filed_contacts'
+    template_name = 'contacts/filed_list.html'
+    # paginate_by = 9
+
+    def get_queryset(self):
+        filed_contacts = ContactField.objects.filter(
+            user=self.request.user.id,
+            filed=True
+        )
+        return filed_contacts
+
+
+class DeleteContactView(LoginRequiredMixin, DeleteView):
+    """
+    Remove a contact from the user's contact list.
+    """
+    model = ContactField
+    template_name = 'contacts/delete_contact.html'
     success_url = '/'

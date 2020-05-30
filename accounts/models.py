@@ -16,7 +16,6 @@ class AccountUserManager(UserManager):
     Class UserManager extended to create users by replacing
     username with email.
     """
-
     def _create_user(self, email, password, **extra_fields):
         if not email:
             raise ValueError('Email is required')
@@ -55,7 +54,6 @@ class User(AbstractUser):
     """
     User model with customized fields.
     """
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     GENDER_CHOICES = [
@@ -92,7 +90,6 @@ class ContactField(models.Model):
     """
     Model for contacts, FK to User model.
     """
-
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE
@@ -107,6 +104,7 @@ class ContactField(models.Model):
         blank=True
     )
     favorite = models.BooleanField(default=False)
+    filed = models.BooleanField(default=False)
 
     def __str__(self):
         today = datetime.now()

@@ -82,7 +82,7 @@ class CreateAccountView(CreateView):
         if not, proceed to register.
         """
         if request.user.is_authenticated:
-            return redirect('contact_list:index')
+            return redirect('accounts:create-done')
 
         return super().dispatch(request, *args, **kwargs)
 

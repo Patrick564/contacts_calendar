@@ -1,8 +1,9 @@
 ## Django ##
 migrations/
 __pycache__/
+db.sqlite3
 
-## Virtualenv ##
+# Virtualenv
 .venv
 
 ## Editor ##

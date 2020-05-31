@@ -1,6 +1,6 @@
 # Python imports
 from uuid import uuid4
-from datetime import datetime
+from datetime import date
 
 # Django imports
 from django.db import models
@@ -59,6 +59,7 @@ class User(AbstractUser):
     GENDER_CHOICES = [
         ('F', 'Female'),
         ('M', 'Male'),
+        ('O', 'Other'),
     ]
 
     user_uuid = models.UUIDField(default=uuid4, editable=False)
@@ -70,46 +71,18 @@ class User(AbstractUser):
     date_of_birth = models.DateField(
         auto_now=False,
         auto_now_add=False,
-        blank=True
+        blank=True,
+        default=date.today
     )
     gender = models.CharField(
         choices=GENDER_CHOICES,
         max_length=15,
-        blank=True
+        blank=True,
+        default='O'
     )
-    phone_number = PhoneField(blank=True)
+    phone_number = PhoneField(blank=True, default='00000000')
 
     objects = AccountUserManager()
 
     def __str__(self):
         return self.email
-
-
-# Model for contacts data
-class ContactField(models.Model):
-    """
-    Model for contacts, FK to User model.
-    """
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50, blank=True)
-    phone_number = PhoneField(blank=True)
-    contact_email = models.EmailField(max_length=254, blank=True)
-    date_of_birth = models.DateField(
-        auto_now=False,
-        auto_now_add=False,
-        blank=True
-    )
-    favorite = models.BooleanField(default=False)
-    filed = models.BooleanField(default=False)
-
-    def __str__(self):
-        today = datetime.now()
-        date_id = str(today.year) + str(today.month) + str(today.day)
-        time_id = str(today.hour) + str(today.minute) + str(today.second)
-        str_id = str(self.user_id) + str(self.id) + date_id + time_id
-
-        return str_id

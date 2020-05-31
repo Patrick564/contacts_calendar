@@ -3,8 +3,8 @@ from django.views.generic import CreateView, DeleteView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # App imports
-from accounts.models import ContactField
-from accounts.forms import AddContactForm
+from contacts.models import ContactField
+from contacts.forms import AddContactForm
 
 
 class AddContactView(LoginRequiredMixin, CreateView):

@@ -58,7 +58,7 @@ class CreateAccountView(CreateView):
     model = User
     form_class = CustomCreationForm
     template_name = 'accounts/create_account.html'
-    success_url = '/accounts/login/'
+    success_url = '/accounts/create/done/'
 
     def _welcome_mail(self, email):
         """

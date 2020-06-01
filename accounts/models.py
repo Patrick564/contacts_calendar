@@ -71,7 +71,6 @@ class User(AbstractUser):
     date_of_birth = models.DateField(
         auto_now=False,
         auto_now_add=False,
-        blank=True,
         default=date.today
     )
     gender = models.CharField(

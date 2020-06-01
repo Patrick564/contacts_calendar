@@ -1,6 +1,6 @@
 import os
 
-from . import config
+from . import local_settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -10,12 +10,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config.secret_key
+SECRET_KEY = local_settings.secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['testserver', '127.0.0.1', '192.168.1.6']
+ALLOWED_HOSTS = ['testserver', '127.0.0.1', '192.168.1.10']
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -31,9 +31,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 EMAIL_PORT = 587
 
-EMAIL_HOST_USER = config.email_host_user
+EMAIL_HOST_USER = local_settings.email_host_user
 
-EMAIL_HOST_PASSWORD = config.email_host_password
+EMAIL_HOST_PASSWORD = local_settings.email_host_password
 
 EMAIL_USE_TLS = True
 
@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'contacts_calendar.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': config.default
+    'default': local_settings.db_mysql_conf
 }
 
 
@@ -153,6 +153,8 @@ NPM_BIN_PATH = r"C:/Program Files/nodejs/npm.cmd"
 
 # Redirect conf
 
+LOGIN_URL = '/accounts/login/'
+
 LOGIN_REDIRECT_URL = '/'
 
-LOGOUT_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/accounts/logout/'

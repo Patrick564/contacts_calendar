@@ -1,12 +1,14 @@
 {% extends 'base/contact_list_base.html' %}
 
-{% block title %}Contacts calendar{% endblock %}
+{% block title %}Favorites{% endblock %}
 
 {% block body_main %}
-    {% if all_contacts %}
+    {% if favorite_contacts %}
+
         <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-2 p-3">
-            {% for contact in all_contacts %}
-                <div class="grid border border-gray-500 rounded-lg bg-gray-100">
+            {% for contact in favorite_contacts %}
+
+                <div class="grid border border-gray-600 rounded-lg bg-gray-100">
                     {% include 'base/contact_top_buttons.html' %}
 
                     {% include 'base/contact_fields.html' %}
@@ -16,12 +18,8 @@
             {% endfor %}
         </div>
     {% else %}
-        <div class="grid justify-center align-center m-2 p-3">
-            {% if request.user.is_authenticated %}
-                Add new contacts in the button add.
-            {% else %}
-                Register or login for access and save your contacts.
-            {% endif %}
+        <div class="grid justify-center m-2 p-3">
+            Anyone contact in the contact list.
         </div>
     {% endif %}
 {% endblock body_main %}

@@ -1,0 +1,42 @@
+<div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4 m-3">
+    <div class="ml-2">
+        <label class="block text-lg font-serif" for="">
+            First name
+        </label>
+        <p class="font-light italic">
+            {{ contact.first_name }}
+        </p>
+    </div>
+    <div class="ml-2">
+        <label class="block text-lg font-serif" for="">
+            Last name
+        </label>
+        <p class="font-light italic">
+            {{ contact.last_name }}
+        </p>
+    </div>
+    <div class="md:row-span-2 md:col-span-2 ml-2">
+        <label class="block text-lg font-serif" for="">
+            Email
+        </label>
+        <p class="font-light italic">
+            {{ contact.contact_email }}
+        </p>
+    </div>
+    <div class="ml-2">
+        <label class="block text-lg font-serif" for="">
+            Phone number
+        </label>
+        <p class="font-light italic">
+            {{ contact.phone_number }}
+        </p>
+    </div>
+    <div class="ml-2">
+        <label class="block text-lg font-serif" for="">
+            Date of Birth
+        </label>
+        <p class="font-light italic">
+            {{ contact.date_of_birth }}
+        </p>
+    </div>
+</div>

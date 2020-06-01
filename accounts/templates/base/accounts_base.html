@@ -7,20 +7,21 @@
     <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
     <title>{% block title %}{% endblock %} - Contacts calendar</title>
 </head>
-<body class="bg-gray-100">
-    <div class="flex justify-center m-2 p-3">
-        <div class="">
-            <div class="text-center my-4">
-                <span class="text-sm border-b border-gray-500">
-                    Contacts calendar
-                </span>
-                <p class="font-sans text-4xl">
-                    {% block body_title %}{% endblock %}
-                </p>
-            </div>
-            {% block body_content %}
-            {% endblock body_content %}
+<body class="bg-gray-200">
+    <div class="mt-5">
+        <div class="text-center my-5">
+            <span class="text-sm border-b border-gray-500">
+                Contacts calendar
+            </span>
+            <p class="font-sans text-4xl">
+                {% block body_title %}{% endblock %}
+            </p>
         </div>
+
+        <main class="">
+            {% block body_main %}
+            {% endblock body_main %}
+        </main>
     </div>
 </body>
 </html>

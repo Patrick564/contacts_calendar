@@ -1,9 +1,8 @@
 # Django imports
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django import forms
 
 # App imports
-from .models import User, ContactField
+from .models import User
 
 
 # Custom form for user creation
@@ -37,17 +36,3 @@ class CustomChangeForm(UserChangeForm):
             'phone_number',
             'gender',
         )
-
-
-class AddContactForm(forms.ModelForm):
-
-    class Meta():
-        model = ContactField
-        fields = [
-            'user',
-            'first_name',
-            'last_name',
-            'contact_email',
-            'date_of_birth',
-            'phone_number',
-        ]

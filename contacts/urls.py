@@ -9,8 +9,22 @@ app_name = 'contacts'
 
 urlpatterns = [
     # Add
-    path('add/', views.AddView.as_view(), name='add'),
+    path('add/', views.AddContactView.as_view(), name='add'),
+
+    # Favorite
+    path('favorite/list/', views.FavoriteListView.as_view(), name='favorites'),
+    path(
+        'favorite/<pk>/add/', views.AddFavoriteView.as_view(),
+        name='add-favorite'
+    ),
+
+    # File
+    path('filed/list/', views.FiledListView.as_view(), name='filed'),
+    path('filed/<pk>/add/', views.AddFiledView.as_view(), name='add-filed'),
+
+    # Update
+    path('update/<pk>/', views.UpdateContactView.as_view(), name='update'),
 
     # Delete
-    path('delete/<username>-<pk>/', views.DeleteView.as_view(), name='delete'),
+    path('delete/<pk>/', views.DeleteContactView.as_view(), name='delete'),
 ]

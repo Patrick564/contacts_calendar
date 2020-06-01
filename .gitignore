@@ -1,7 +1,19 @@
-*/migrations
-*/__pycache__
+## Django ##
+migrations/
+__pycache__/
+db.sqlite3
+
+# Virtualenv
 .venv
+
+## Editor ##
 .vscode
+
+## Images ##
 *.svg
-config.py
-theme/static_src/node_modules/
+
+## Local settings ##
+local_settings.py
+
+## Framework folders ##
+theme/

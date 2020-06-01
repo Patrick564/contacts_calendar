@@ -1,0 +1,89 @@
+{% extends 'base/contact_list_base.html' %}
+
+{% block title %}Update contact{% endblock %}
+
+{% block body_main %}
+    <div class="grid justify-center m-3">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="bg-gray-100 mb-1" role="alert">
+                <span class="text-sm text-red-600 italic">
+                    {{ form.non_field_errors }}
+                </span>
+            </div>
+
+            <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-3 gap-4 border border-gray-500 rounded-lg m-2 p-3">
+                <div class="md:row-span-1 md:col-span-3 text-left text-xl font-serif border-b border-gray-500">
+                    <p>Update contact</p>
+                </div>
+                <div class="text-left">
+                    <label class="block text-lg font-serif" for="">
+                        First name
+                    </label>
+                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="" value="{{ object.first_name }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.first_name.errors }}
+                        </span>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <label class="block text-lg font-serif" for="">
+                        Last name
+                    </label>
+                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="last_name" id="" value="{{ object.last_name }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.last_name.errors }}
+                        </span>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <label class="block text-lg font-serif" for="">
+                        Email
+                    </label>
+                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="email" name="contact_email" id="email" value="{{ object.contact_email }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.email.errors }}
+                        </span>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <label class="block text-lg font-serif" for="">
+                        Phone number
+                    </label>
+                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="tel" name="phone_number_0" id="" value="{{ object.phone_number }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.phone_number_0.errors }}
+                        </span>
+                    </div>
+                </div>
+                <div class="text-left">
+                    <label class="block text-lg font-serif" for="">
+                        Date of birth
+                    </label>
+                    <input class="font-sans text-sm appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="date" name="date_of_birth" id="" value="{{ object.date_of_birth|date:'Y-m-d' }}">
+                    <div class="mt-1" role="alert">
+                        <span class="text-sm text-red-600 italic">
+                            {{ form.date_of_birth.errors }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-2">
+                <div class="flex justify-between">
+                    <a class="block font-mono bg-blue-300 border-blue-300 hover:border-transparent hover:bg-blue-500 rounded mt-3 p-2" href="{% url 'contact_list:index' %}">
+                        Cancel
+                    </a>
+                    <button class="block font-mono bg-green-300 border-green-300 hover:border-transparent hover:bg-green-500 rounded mt-3 p-2" type="submit">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock body_main %}

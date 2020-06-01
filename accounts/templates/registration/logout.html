@@ -1,8 +1,23 @@
-{% extends 'base/registration_base.html' %}
+{% extends 'base/accounts_base.html' %}
 
-{% block title %}Logout{% endblock title %}
+{% block title %}Logout{% endblock %}
 
-{% block text %}
-    Session closed, come back again!
-    {{ form.as_p }}
-{% endblock text %}
+{% block body_title %}Logout{% endblock %}
+
+{% block body_main %}
+    <div class="grid justify-center m-2 p-3">
+        <div class="bg-red-200 border border-gray-500 rounded-lg mb-3 p-3">
+            <p class="text-lg">
+               Session closed, come back again! 
+            </p>
+        </div>
+
+        <div class="">
+            <p class="text-center">
+                <a class="text-blue-500 hover:underline" href="{% url 'contact_list:index' %}">
+                    [Back to the principal page]
+                </a>
+            </p>
+        </div>
+    </div>
+{% endblock body_main %}

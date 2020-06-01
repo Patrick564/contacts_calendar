@@ -16,7 +16,6 @@ from .models import User
 from .forms import CustomCreationForm, CustomChangeForm
 
 
-# Settings of account
 class SettingsView(TemplateView):
     """
     Settings of account; profile, change password and email.
@@ -24,7 +23,6 @@ class SettingsView(TemplateView):
     template_name = 'accounts/settings.html'
 
 
-# Update fields of user
 class ProfileView(LoginRequiredMixin, ListView):
     """
     Display user data in view mode.
@@ -39,7 +37,6 @@ class ProfileView(LoginRequiredMixin, ListView):
         return user
 
 
-# Profile user
 class UpdateProfileView(LoginRequiredMixin, UpdateView):
     """
     Allows modifying user by ommiting email and password.
@@ -54,7 +51,6 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
         return self.request.user
 
 
-# Create account with custom fields
 class CreateAccountView(CreateView):
     """
     Create a account and send a welcome mail.
@@ -62,7 +58,7 @@ class CreateAccountView(CreateView):
     model = User
     form_class = CustomCreationForm
     template_name = 'accounts/create_account.html'
-    success_url = '/accounts/login/'
+    success_url = '/accounts/create/done/'
 
     def _welcome_mail(self, email):
         """
@@ -81,9 +77,12 @@ class CreateAccountView(CreateView):
         )
 
     def dispatch(self, request, *args, **kwargs):
-        # If user is auth redirect to principal page
+        """
+        If a user is registered redirect to principal page,
+        if not, proceed to register.
+        """
         if request.user.is_authenticated:
-            return redirect('contact_list:index')
+            return redirect('accounts:create-done')
 
         return super().dispatch(request, *args, **kwargs)
 
@@ -95,7 +94,6 @@ class CreateAccountView(CreateView):
         return super().form_valid(form)
 
 
-# Donde create account, redirect to principal page
 class DoneCreateAccountView(TemplateView):
     """
     Load done create account view and redirect to

@@ -21,17 +21,15 @@ class ContactField(models.Model):
         on_delete=models.CASCADE
     )
     first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50, blank=True, default='Empty')
-    phone_number = PhoneField(blank=True, default='00000000')
+    last_name = models.CharField(max_length=50, default='Empty')
+    phone_number = PhoneField(default='00000000')
     contact_email = models.EmailField(
         max_length=254,
-        blank=True,
-        default='empty@contactscalendar.com'
+        default='empty@cc.com'
     )
     date_of_birth = models.DateField(
         auto_now=False,
         auto_now_add=False,
-        blank=True,
         default=date.today
     )
     favorite = models.BooleanField(default=False)

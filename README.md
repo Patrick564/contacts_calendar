@@ -11,9 +11,9 @@ Steps for clone and recreate this page yourself.
 
 Clone this proyect
 
-'''bash
+```bash
 git clone https://github.com/Patrick564/contacts_calendar.git
-'''
+```
 
 And install the file 'requirements.txt'
 

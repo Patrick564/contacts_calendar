@@ -17,25 +17,25 @@ git clone https://github.com/Patrick564/contacts_calendar.git
 
 And install the file 'requirements.txt'
 
-'''
+```bash
 pip install -r requirements.txt
-'''
+```
 
 For Tailwind installation run, the folder name is 'theme', but you can name it
 as you like, just make sure to change it in INSTALLED_APPS of settings.py
 
-'''
+```bash
 python manage.py tailwind init theme
 python manage.py tailwind install
-'''
+```
 
 ### Test
 
 Use the Django tests
 
-'''bash
+```bash
 python manage.py test
-'''
+```
 
 ## Build with
 

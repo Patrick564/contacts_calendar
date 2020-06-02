@@ -6,7 +6,6 @@ from django.contrib.auth import authenticate
 from .models import User
 
 
-# Test about custom user model
 class UserCustom(TestCase):
     """
     Test about accounts creation, auth, password change
@@ -83,7 +82,6 @@ class UserCustom(TestCase):
         self.assertNotEqual(ram, 'empresa@coronita.com', 'User repeated')
 
 
-# Test about accounts/ page load
 class AccountsPageLoad(TestCase):
     """
     Test the accounts app page, load with session and
@@ -120,7 +118,7 @@ class AccountsPageLoad(TestCase):
         create = self.client.get('/accounts/create/', follow=True)
         create_done = self.client.get('/accounts/create/done/', follow=True)
 
-        self.assertRedirects(create, '/')
+        self.assertRedirects(create, '/accounts/create/done/')
         self.assertEqual(create_done.status_code, 200, 'Done load error')
 
     def test_profile_views_anonymous_user(self):
@@ -139,17 +137,3 @@ class AccountsPageLoad(TestCase):
 
         self.assertEqual(profile.status_code, 200, 'Profile load error')
         self.assertEqual(update.status_code, 200, 'Update load error')
-
-    def test_context(self):
-        login = self.client.get('/accounts/login/')
-        password_change = self.client.get('/accounts/password_change/')
-        password_reset = self.client.get('/accounts/password_reset/')
-
-        print('Login')
-        print(login.context)
-
-        print('Pwd Change')
-        print(password_change.context)
-
-        print('Pwd Reset')
-        print(password_reset.context)

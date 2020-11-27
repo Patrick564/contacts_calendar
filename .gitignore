@@ -13,7 +13,7 @@ db.sqlite3
 *.svg
 
 ## Local settings ##
-local_settings.py
+contacts_calendar/local_settings.py
 
 ## Framework folders ##
 theme/

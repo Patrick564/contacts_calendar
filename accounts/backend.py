@@ -4,7 +4,6 @@ from .models import User
 
 
 class EmailBackend(ModelBackend):
-
     def authenticate(self, request, email, password, **kwargs):
         if email and password:
             try:

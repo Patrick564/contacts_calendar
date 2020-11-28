@@ -40,7 +40,6 @@ EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = [
-
     # Created apps
     'accounts',
     'contacts',
@@ -95,7 +94,11 @@ WSGI_APPLICATION = 'contacts_calendar.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': local_settings.db_mysql_conf
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     local_settings.db_mysql_conf
+    # },
+    'default': local_settings.postgre_db
 }
 
 
@@ -148,7 +151,7 @@ STATIC_URL = '/static/'
 TAILWIND_APP_NAME = 'theme'
 
 # Route of npm/node in your path
-NPM_BIN_PATH = r"C:/Program Files/nodejs/npm.cmd"
+# NPM_BIN_PATH = r"C:/Program Files/nodejs/npm.cmd"
 
 
 # Redirect conf

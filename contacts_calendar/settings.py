@@ -1,6 +1,9 @@
 import os
+# import dj_database_url
+from dotenv import load_dotenv
 
-from . import local_settings
+load_dotenv(verbose=True)
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -10,12 +13,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = local_settings.secret_key
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.10']
+ALLOWED_HOSTS = [
+    'contacts-calendar.herokuapp.com',
+    'localhost',
+    '127.0.0.1',
+    '192.168.1.10'
+]
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -31,14 +39,13 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 EMAIL_PORT = 587
 
-EMAIL_HOST_USER = local_settings.email_host_user
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 
-EMAIL_HOST_PASSWORD = local_settings.email_host_password
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 EMAIL_USE_TLS = True
 
 # Application definition
-
 INSTALLED_APPS = [
     # Created apps
     'accounts',
@@ -69,7 +76,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # livereload-server
+    # Livereload-server
     'livereload.middleware.LiveReloadScript',
 ]
 
@@ -98,12 +105,20 @@ WSGI_APPLICATION = 'contacts_calendar.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     local_settings.db_mysql_conf
-    # },
-    'default': local_settings.postgre_db
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('NAME_DB'),
+        'USER': os.getenv('USER_DB'),
+        'PASSWORD': os.getenv('PASSWORD_DB'),
+        'HOST': os.getenv('HOST_DB'),
+        'PORT': os.getenv('PORT_DB')
+    }
 }
+
+# DATABASES['default'] = dj_database_url.config(
+#     default=os.getenv('DATABASE_URL'),
+#     conn_max_age=600
+# )
 
 
 # Password validation

@@ -17,4 +17,5 @@ contacts_calendar/local_settings.py
 *.env
 
 ## Framework folders ##
-theme/
+theme/static/
+theme/static_src/

@@ -8,12 +8,22 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 """
 
 import os
-# from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 from django.core.wsgi import get_wsgi_application
 
-# load_dotenv()
+load_dotenv()
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'contacts_calendar.settings')
+
+if os.getenv('PRODUCTION'):
+    os.environ.setdefault(
+        'DJANGO_SETTINGS_MODULE',
+        'contacts_calendar.settings.production'
+    )
+else:
+    os.environ.setdefault(
+        'DJANGO_SETTINGS_MODULE',
+        'contacts_calendar.settings.local'
+    )
 
 application = get_wsgi_application()

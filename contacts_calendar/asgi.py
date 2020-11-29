@@ -8,9 +8,22 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/asgi/
 """
 
 import os
+from dotenv import load_dotenv
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'contacts_calendar.settings')
+load_dotenv()
+
+
+if os.getenv('PRODUCTION'):
+    os.environ.setdefault(
+        'DJANGO_SETTINGS_MODULE',
+        'contacts_calendar.settings.production'
+    )
+else:
+    os.environ.setdefault(
+        'DJANGO_SETTINGS_MODULE',
+        'contacts_calendar.settings.local'
+    )
 
 application = get_asgi_application()

@@ -2,7 +2,7 @@ import os
 # import dj_database_url
 from dotenv import load_dotenv
 
-load_dotenv(verbose=True)
+load_dotenv()
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+# DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = [
     'contacts-calendar.herokuapp.com',
@@ -104,21 +104,11 @@ WSGI_APPLICATION = 'contacts_calendar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('NAME_DB'),
-        'USER': os.getenv('USER_DB'),
-        'PASSWORD': os.getenv('PASSWORD_DB'),
-        'HOST': os.getenv('HOST_DB'),
-        'PORT': os.getenv('PORT_DB')
-    }
-}
+# DATABASES = {
+#     'default': {}
+# }
 
-# DATABASES['default'] = dj_database_url.config(
-#     default=os.getenv('DATABASE_URL'),
-#     conn_max_age=600
-# )
+# DATABASES['default'].update()
 
 
 # Password validation

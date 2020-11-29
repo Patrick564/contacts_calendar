@@ -1,0 +1,15 @@
+__pycache__/
+db.sqlite3
+
+.venv
+
+.vscode
+
+*.svg
+
+contacts_calendar/local_settings.py
+*.env
+README.md
+
+theme/templates/
+theme/static_src/node_modules/

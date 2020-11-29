@@ -18,12 +18,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = [
-    'contacts-calendar.herokuapp.com',
-    'localhost',
-    '127.0.0.1',
-    '192.168.1.10'
-]
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'accounts.User'
 

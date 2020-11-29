@@ -11,10 +11,11 @@ DEBUG = False
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
     }
 }
 
 DATABASES['default'] = dj_database_url.config(
-    default=os.getenv('DATABASE_URL')
+    default=os.getenv('DATABASE_URL'),
+    conn_max_age=600
 )

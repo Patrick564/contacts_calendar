@@ -15,15 +15,9 @@ from django.core.wsgi import get_wsgi_application
 load_dotenv()
 
 
-if os.getenv('PRODUCTION'):
-    os.environ.setdefault(
+os.environ.setdefault(
         'DJANGO_SETTINGS_MODULE',
-        'contacts_calendar.settings.production'
-    )
-else:
-    os.environ.setdefault(
-        'DJANGO_SETTINGS_MODULE',
-        'contacts_calendar.settings.local'
-    )
+        'contacts_calendar.settings.base'
+)
 
 application = get_wsgi_application()

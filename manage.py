@@ -9,16 +9,10 @@ load_dotenv()
 
 
 def main():
-    if os.getenv('PRODUCTION'):
-        os.environ.setdefault(
-            'DJANGO_SETTINGS_MODULE',
-            'contacts_calendar.settings.production'
-        )
-    else:
-        os.environ.setdefault(
-            'DJANGO_SETTINGS_MODULE',
-            'contacts_calendar.settings.local'
-        )
+    os.environ.setdefault(
+        'DJANGO_SETTINGS_MODULE',
+        'contacts_calendar.settings.base'
+    )
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

@@ -4,6 +4,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+if os.getenv('PRODUCTION'):
+    from .production import *  # noqa
+else:
+    from .local import *  # noqa
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -14,9 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -64,6 +66,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -95,17 +98,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'contacts_calendar.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {}
-# }
-
-# DATABASES['default'].update()
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -132,14 +124,6 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Lima'
 
-# DATE_FORMAT = ['%d-%m-%Y']
-
-# DATETIME_FORMAT = 'j N Y, P'
-
-# DATETIME_INPUT_FORMATS = [
-#     '%d/%m/%Y %H:%M:%S'
-#     ]
-
 USE_I18N = True
 
 USE_L10N = False
@@ -150,7 +134,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'))
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 TAILWIND_APP_NAME = 'theme'
 

@@ -15,7 +15,7 @@ SECRET_KEY = local_settings.secret_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['testserver', '127.0.0.1', '192.168.1.10']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.10']
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # Installed libraries
     'phone_field',
     'tailwind',
+    'livereload',
 
     # Django apps
     'django.contrib.admin',
@@ -67,6 +68,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # livereload-server
+    'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'contacts_calendar.urls'

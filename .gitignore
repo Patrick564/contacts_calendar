@@ -12,9 +12,7 @@ db.sqlite3
 *.svg
 
 ## Local settings ##
-contacts_calendar/local_settings.py
 *.env
 
 ## Framework folders ##
-theme/static/
-theme/static_src/node_modules/
+theme/

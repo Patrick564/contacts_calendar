@@ -20,8 +20,7 @@ class ContactField(models.Model):
         User,
         on_delete=models.CASCADE
     )
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50, default='Empty')
+    full_name = models.CharField(max_length=50, default='Cosme Fulanito')
     phone_number = PhoneField(default='00000000')
     contact_email = models.EmailField(
         max_length=254,

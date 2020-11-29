@@ -70,7 +70,7 @@ class CreateAccountView(CreateView):
         send_mail(
             'Welcome to Contacts Calendar!',
             html_plain_text,
-            settings.EMAIL_HOST_USER,
+            settings.base.EMAIL_HOST_USER,
             [email],
             fail_silently=False,
             html_message=html_message

@@ -21,29 +21,18 @@
                 </div>
                 <div class="text-left">
                     <label class="block text-lg font-serif" for="">
-                        First name
+                        Full name
                     </label>
-                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="" value="{{ user.first_name }}">
+                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="" value="{{ user.full_name }}">
                     <div class="mt-1" role="alert">
                         <span class="text-sm text-red-600 italic">
-                            {{ form.first_name.errors }}
+                            {{ form.full_name.errors }}
                         </span>
                     </div>
                 </div>
                 <div class="text-left">
                     <label class="block text-lg font-serif" for="">
-                        Last name
-                    </label>
-                    <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="last_name" id="" value="{{ user.last_name }}">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.last_name.errors }}
-                        </span>
-                    </div>
-                </div>
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Phone number
+                        Phone
                     </label>
                     <input class="font-sans appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="tel" name="phone_number_0" id="" value="{{ user.phone_number }}">
                     <div class="mt-1" role="alert">
@@ -63,7 +52,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="text-left">
+                <!-- <div class="text-left">
                     <label class="block text-lg font-serif" for="">
                         Gender
                     </label>
@@ -76,7 +65,7 @@
                             {{ form.gender.errors }}
                         </span>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-3 gap-4 border border-gray-500 rounded-lg m-2 p-3">

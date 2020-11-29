@@ -22,31 +22,19 @@
 
                 <div class="text-left">
                     <label class="block text-lg font-serif" for="">
-                        First name
+                        Full name
                     </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="first_name" id="first_name">
+                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="full_name" id="full_name">
                     <div class="mt-1" role="alert">
                         <span class="text-sm text-red-600 italic">
-                            {{ form.first_name.errors }}
+                            {{ form.full_name.errors }}
                         </span>
                     </div>
                 </div>
 
                 <div class="text-left">
                     <label class="block text-lg font-serif" for="">
-                        Last name
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="last_name" id="last_name">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.last_name.errors }}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Phone number
+                        Phone
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="phone_number_0" id="phone_number">
                     <div class="mt-1" role="alert">
@@ -58,27 +46,12 @@
 
                 <div class="text-left">
                     <label class="block text-lg font-serif" for="">
-                        Birth date
+                        Birth date *
                     </label>
                     <input class="font-sans text-sm appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="date" name="date_of_birth" id="date_of_birth">
                     <div class="mt-1" role="alert">
                         <span class="text-sm text-red-600 italic">
                             {{ form.date_of_birth.errors }}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Gender
-                    </label>
-                    <select class="appearance-none bg-gray-200 border border-blue-400 text-gray-700 h-7 w-24 py-1 px-2 rounded leading-tight focus:outline-none focus:shadow-outline focus:border-gray-500" name="gender" id="gender">
-                        <option value="F" select>Female</option>
-                        <option value="M">Male</option>
-                    </select>
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.gender.errors }}
                         </span>
                     </div>
                 </div>
@@ -90,7 +63,7 @@
                 </div>
                 <div class="text-left">
                     <label class="block text-lg font-serif" for="">
-                        Email
+                        Email *
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" id="email">
                     <div class="mt-1" role="alert">
@@ -101,7 +74,7 @@
                 </div>
                 <div class="text-left">
                     <label class="block text-lg font-serif" for="">
-                        Username
+                        Username *
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="username">
                     <div class="mt-1" role="alert">
@@ -112,7 +85,7 @@
                 </div>
                 <div class="text-left">
                     <label class="block text-lg font-serif" for="">
-                        Password
+                        Password *
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="password1" id="password1">
                     <div class="mt-1" role="alert">
@@ -123,7 +96,7 @@
                 </div>
                 <div class="text-left">
                     <label class="block text-lg font-serif" for="">
-                        Password confirmation
+                        Password confirmation *
                     </label>
                     <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="password2" id="password2">
                     <div class="mt-1" role="alert">

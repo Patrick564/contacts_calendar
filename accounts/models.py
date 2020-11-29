@@ -56,29 +56,30 @@ class User(AbstractUser):
     """
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
-    GENDER_CHOICES = [
-        ('F', 'Female'),
-        ('M', 'Male'),
-        ('O', 'Other'),
-    ]
+    # GENDER_CHOICES = [
+    #     ('F', 'Female'),
+    #     ('M', 'Male'),
+    #     ('O', 'Other'),
+    # ]
 
     user_uuid = models.UUIDField(default=uuid4, editable=False)
     username = models.CharField(
         unique=True,
         max_length=50
     )
+    full_name = models.CharField(max_length=50, default='Cosme Fulanito')
     email = models.EmailField(unique=True, max_length=254)
     date_of_birth = models.DateField(
         auto_now=False,
         auto_now_add=False,
         default=date.today
     )
-    gender = models.CharField(
-        choices=GENDER_CHOICES,
-        max_length=15,
-        blank=True,
-        default='O'
-    )
+    # gender = models.CharField(
+    #     choices=GENDER_CHOICES,
+    #     max_length=15,
+    #     blank=True,
+    #     default='O'
+    # )
     phone_number = PhoneField(blank=True, default='00000000')
 
     objects = AccountUserManager()

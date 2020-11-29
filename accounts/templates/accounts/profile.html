@@ -7,29 +7,21 @@
 {% block body_main %}
     <div class="grid grid-rows-1 gap-4 justify-center m-2 pb-8">
 
-        <div class="bg-gray-100 grid sm:grid-cols-2 md:grid-cols-3 gap-4 rounded-lg border border-solid border-gray-600 m-2 p-3">
-            <div class="w-full row-span-1 col-span-2 md:col-span-3 text-left text-xl font-serif border-b border-gray-500">
+        <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 gap-4 rounded-lg border border-solid border-gray-600 m-2 p-3">
+            <div class="w-full md:row-span-1 md:col-span-2 text-left text-xl font-serif border-b border-gray-500">
                 <p>Personal information</p>
             </div>
             <div class="text-left p-2">
                 <label class="block text-lg font-serif" for="">
-                    First name
+                    Full name
                 </label>
                 <p class="font-light italic">
-                    {{ user.first_name }}
+                    {{ user.full_name }}
                 </p>
             </div>
             <div class="text-left p-2">
                 <label class="block text-lg font-serif" for="">
-                    Last name
-                </label>
-                <p class="font-light italic">
-                    {{ user.last_name }}
-                </p>
-            </div>
-            <div class="text-left p-2">
-                <label class="block text-lg font-serif" for="">
-                    Phone number
+                    Phone
                 </label>
                 <p class="font-light italic">
                     {{ user.phone_number }}
@@ -41,14 +33,6 @@
                 </label>
                 <p class="font-light italic">
                     {{ user.date_of_birth|date:'d/m/Y' }}
-                </p>
-            </div>
-            <div class="text-left p-2">
-                <label class="block text-lg font-serif" for="">
-                    Gender
-                </label>
-                <p class="font-light italic">
-                    {{ user.gender }}
                 </p>
             </div>
         </div>

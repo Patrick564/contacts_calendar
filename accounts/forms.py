@@ -11,14 +11,12 @@ class CustomCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = (
-            'first_name',
-            'last_name',
+            'full_name',
             'email',
             'username',
             'password1',
             'password2',
             'date_of_birth',
-            'gender',
             'phone_number',
         )
 
@@ -30,9 +28,7 @@ class CustomChangeForm(UserChangeForm):
         model = User
         fields = (
             'username',
-            'first_name',
-            'last_name',
+            'full_name',
             'date_of_birth',
             'phone_number',
-            'gender',
         )

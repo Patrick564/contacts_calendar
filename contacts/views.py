@@ -23,8 +23,7 @@ class UpdateContactView(LoginRequiredMixin, UpdateView):
     """
     model = ContactField
     fields = [
-        'first_name',
-        'last_name',
+        'full_name',
         'contact_email',
         'phone_number',
         'date_of_birth'

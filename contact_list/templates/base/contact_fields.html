@@ -1,21 +1,13 @@
 <div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4 m-3">
     <div class="ml-2">
         <label class="block text-lg font-serif" for="">
-            First name
+            Full name
         </label>
         <p class="font-light italic">
-            {{ contact.first_name }}
+            {{ contact.full_name }}
         </p>
     </div>
     <div class="ml-2">
-        <label class="block text-lg font-serif" for="">
-            Last name
-        </label>
-        <p class="font-light italic">
-            {{ contact.last_name }}
-        </p>
-    </div>
-    <div class="md:row-span-2 md:col-span-2 ml-2">
         <label class="block text-lg font-serif" for="">
             Email
         </label>
@@ -25,7 +17,7 @@
     </div>
     <div class="ml-2">
         <label class="block text-lg font-serif" for="">
-            Phone number
+            Phone
         </label>
         <p class="font-light italic">
             {{ contact.phone_number }}

@@ -13,9 +13,7 @@ else:
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -31,15 +29,10 @@ AUTHENTICATION_BACKENDS = (
 
 # Email custom settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
 EMAIL_HOST = 'smtp.gmail.com'
-
 EMAIL_PORT = 587
-
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-
 EMAIL_USE_TLS = True
 
 # Application definition
@@ -99,8 +92,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'contacts_calendar.wsgi.application'
 
 # Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa: E501
@@ -118,36 +109,24 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'America/Lima'
-
 USE_I18N = True
-
 USE_L10N = False
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # noqa
 
+# Tailwind settings
 TAILWIND_APP_NAME = 'theme'
 
-# Route of npm/node in your path
+# Route of npm/node in your path in windows
 # NPM_BIN_PATH = r"C:/Program Files/nodejs/npm.cmd"
 
-
 # Redirect conf
-
 LOGIN_URL = '/accounts/login/'
-
 LOGIN_REDIRECT_URL = '/'
-
 # LOGOUT_REDIRECT_URL = '/accounts/logout/'

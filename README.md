@@ -68,5 +68,3 @@ python manage.py runserver
 customizing the User base model, authentication URLs and login methods.
 
 [Tailwind CSS](https://github.com/tailwindcss/tailwindcss) is used as CSS framework.
-
-[Django-Tailwind](https://pypi.org/project/django-tailwind/) - for use Tailwind with Django.

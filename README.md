@@ -9,32 +9,56 @@ Steps for clone and recreate this page yourself.
 
 ### Installing
 
+#### Python enviroment
+
 Clone this proyect
 
 ```bash
 git clone https://github.com/Patrick564/contacts_calendar.git
 ```
 
-And install the file 'requirements.txt'
+If yout don't have a virtual enviroment create one (call folder as you like)
+
+```bash
+python -m venv .venv
+```
+
+And activate with the command
+
+```bash
+source .venv/bin/activate
+```
+
+Install the requirements
 
 ```bash
 pip install -r requirements.txt
 ```
 
-For Tailwind installation run, the folder name is 'theme', but you can name it
-as you like, just make sure to change it in INSTALLED_APPS of settings.py
+#### Django enviroment
+
+First make the migrations
 
 ```bash
-python manage.py tailwind init theme
-python manage.py tailwind install
+python manage.py makemigrations
+python manage.py migrate
 ```
 
-### Test
-
-Use the Django tests
+Create a superuser
 
 ```bash
-python manage.py test
+python manage.py createsuperuser
+```
+
+## Run server
+
+Configure the enviroments variables in a .env file at the same level
+what settings folder
+
+Then run server
+
+```bash
+python manage.py runserver
 ```
 
 ## Build with

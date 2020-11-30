@@ -1,18 +1,18 @@
-## Django ##
+# Django
 __pycache__/
 db.sqlite3
 
 # Virtualenv
 .venv
 
-## Editor ##
+# Editor
 .vscode
 
-## Images ##
+# Images
 *.svg
 
-## Local settings ##
+# Local settings
 *.env
 
-## Framework folders ##
+# Framework folders
 theme/

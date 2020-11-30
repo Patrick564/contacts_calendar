@@ -5,4 +5,3 @@ db.sqlite3
 *.svg
 *.env
 README.md
-theme/

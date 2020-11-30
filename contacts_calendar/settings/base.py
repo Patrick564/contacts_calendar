@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'accounts',
     'contacts',
     'contact_list',
-    'theme',
 
     # Installed libraries
     'phone_field',

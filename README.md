@@ -2,6 +2,7 @@
 
 A page for contacts management with basic fields as first name, last name,
 phone number, email and date of birth.
+View in https://contacts-calendar.herokuapp.com/
 
 ## Installation
 

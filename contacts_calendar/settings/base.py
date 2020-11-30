@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
     # Installed libraries
     'phone_field',
-    'tailwind',
     'livereload',
 
     # Django apps
@@ -116,15 +115,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # noqa
-
-# Tailwind settings
-TAILWIND_APP_NAME = 'theme'
-
-# Route of npm/node in your path in windows
-# NPM_BIN_PATH = r"C:/Program Files/nodejs/npm.cmd"
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'contact_list/static/'),
+)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # noqa
 
 # Redirect conf
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-# LOGOUT_REDIRECT_URL = '/accounts/logout/'

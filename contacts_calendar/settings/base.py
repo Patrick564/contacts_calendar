@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG_SETTING')
 
 ALLOWED_HOSTS = ['*', '.herokuapp.com', 'contacts-calendar.herokuapp.com']
 

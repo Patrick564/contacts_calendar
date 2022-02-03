@@ -10,19 +10,19 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body class="relative bg-gray-200">
-    <nav class="fixed top-0 left-0 right-0 flex items-center justify-between flex-wrap bg-gray-800 p-3">
-        <div class="text-gray-200 flex items-center flex-shrink-0 mr-6">
-            <p class="font-semibold text-2xl tracking-tight">
-                <a href="{% url 'contact_list:index' %}">
-                    Contacts Calendar
-                </a>
-            </p>
+    <nav class="fixed top-0 left-0 right-0 flex justify-between flex-wrap bg-gray-800 p-3">
+        <div class="text-gray-200 mr-6 font-semibold text-2xl tracking-tight">
+          <a href="{% url 'contact_list:index' %}">
+            Contacts Calendar
+          </a>
         </div>
+
         <div class="block lg:hidden">
             <button class="flex items-center px-3 py-2 border rounded text-white border-white hover:border-transparent hover:text-indigo-500 hover:bg-white" onclick="navBar()">
                 Menu
             </button>
         </div>
+
         <div class="font-mono text-center block w-full flex-grow hidden lg:flex lg:items-center lg:w-auto" id="nav-items">
             <div class="text-sm lg:flex-grow">
             </div>
@@ -52,7 +52,7 @@
                         Sign out
                     </a>
                 </div>
-            {% else %}
+{% comment %}            {% else %}
                 <div class="text-sm">
                     <a class="block text-gray-200 hover:text-green-500 rounded mt-4 lg:mt-0 mx-3 p-2" href="{% url 'accounts:login' %}">
                         Sign in
@@ -62,7 +62,7 @@
                     <a class="block text-gray-200 border-2 border-green-500 rounded mt-4 lg:mt-0 mx-3 p-2 hover:bg-green-500" href="{% url 'accounts:create' %}">
                         Sing up
                     </a>
-                </div>
+                </div>{% endcomment %}
             {% endif %}
         </div>
     </nav>

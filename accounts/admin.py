@@ -9,15 +9,6 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomCreationForm
     form = CustomChangeForm
 
-    fieldsets = UserAdmin.fieldsets + (
-        (None, {
-            'fields': (
-                'date_of_birth',
-                'phone_number',
-            ),
-        }),
-    )
-
     add_fieldsets = (
         (None, {
             'fields': (

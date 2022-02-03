@@ -3,29 +3,44 @@
 {% block title %}Contacts calendar{% endblock %}
 
 {% block body_main %}
-    {% if all_contacts %}
-        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-2 p-3">
-            {% for contact in all_contacts %}
-                <div class="grid border border-gray-500 rounded-lg bg-gray-100">
-                    {% include 'base/contact_top_buttons.html' %}
+  {% if all_contacts %}
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-2 p-3">
+      {% for contact in all_contacts %}
+        <div class="grid border border-gray-500 rounded-lg bg-gray-100">
+          {% include 'base/contact_top_buttons.html' %}
 
-                    {% include 'base/contact_fields.html' %}
+          {% include 'base/contact_fields.html' %}
 
-                    {% include 'base/contact_bottom_buttons.html' %}
-                </div>
-            {% endfor %}
+          {% include 'base/contact_bottom_buttons.html' %}
         </div>
-    {% else %}
-        <div class="grid justify-center align-center m-2 p-3">
-            {% if request.user.is_authenticated %}
-                Add new contacts in the button add.
-            {% else %}
-                Register or login for access and save your contacts.
-            {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div
+      class="flex justify-center">
+      {% if request.user.is_authenticated %}
+        Add new contacts in the button add.
+      {% else %}
+        <div class="bg-white flex flex-col justify-self-center justify-items-center border rounded-md border-gray-500 mt-10 m-2 p-3 w-64">
+          <div class="text-sm text-center">
+            <a class="block text-black hover:text-green-500 rounded lg:mt-0 m-1 p-2"
+               href="{% url 'accounts:login' %}">
+              Sign in
+            </a>
+          </div>
+
+          <div class="text-sm text-center">
+            <a class="block text-black border-2 border-green-500 rounded lg:mt-0 m-1 p-2 hover:bg-green-500"
+               href="{% url 'accounts:create' %}">
+              Sign up
+            </a>
+          </div>
         </div>
-    {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
 {% endblock body_main %}
 
 {% block body_footer %}
-    {% include 'base/contact_pagination.html' %}
+  {% include 'base/contact_pagination.html' %}
 {% endblock body_footer %}

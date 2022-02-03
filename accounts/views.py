@@ -1,3 +1,9 @@
+# Env vars load
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
 # Django imports
 from django.shortcuts import redirect
 from django.views.generic.edit import UpdateView, CreateView
@@ -8,12 +14,26 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
-# Settings import
-from contacts_calendar import settings
-
 # App imports
 from .models import User
 from .forms import CustomCreationForm, CustomChangeForm
+
+
+def _welcome_mail(email):
+    """
+    Send a welcome email to new users.
+    """
+    html_message = render_to_string('mail/welcome_mail.html')
+    html_plain_text = strip_tags(html_message)
+
+    send_mail(
+        'Welcome to Contacts Calendar!',
+        html_plain_text,
+        os.getenv('EMAIL_SENDER'),
+        [email],
+        fail_silently=False,
+        html_message=html_message
+    )
 
 
 class SettingsView(TemplateView):
@@ -39,7 +59,7 @@ class ProfileView(LoginRequiredMixin, ListView):
 
 class UpdateProfileView(LoginRequiredMixin, UpdateView):
     """
-    Allows modifying user by ommiting email and password.
+    Allows modifying user by omitting email and password.
     """
     login_url = '/accounts/login/'
     model = User
@@ -53,28 +73,12 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
 
 class CreateAccountView(CreateView):
     """
-    Create a account and send a welcome mail.
+    Create an account and send a welcome mail.
     """
     model = User
     form_class = CustomCreationForm
     template_name = 'accounts/create_account.html'
-    success_url = '/accounts/create/done/'
-
-    def _welcome_mail(self, email):
-        """
-        Send a welcome email to new users.
-        """
-        html_message = render_to_string('mail/welcome_mail.html')
-        html_plain_text = strip_tags(html_message)
-
-        send_mail(
-            'Welcome to Contacts Calendar!',
-            html_plain_text,
-            settings.base.EMAIL_HOST_USER,
-            [email],
-            fail_silently=False,
-            html_message=html_message
-        )
+    success_url = '/accounts/login'
 
     def dispatch(self, request, *args, **kwargs):
         """
@@ -89,7 +93,7 @@ class CreateAccountView(CreateView):
     def form_valid(self, form):
         email = form.cleaned_data['email']
 
-        self._welcome_mail(email)
+        _welcome_mail(email)
 
         return super().form_valid(form)
 
@@ -97,7 +101,7 @@ class CreateAccountView(CreateView):
 class DoneCreateAccountView(TemplateView):
     """
     Load done create account view and redirect to
-    principal page, if is not the case it also redirect
+    principal page, if is not the case it also redirects
     to principal page.
     """
     template_name = 'accounts/create_account_done.html'

@@ -10,15 +10,15 @@ Steps for clone and recreate this page yourself.
 
 ### Installing
 
-#### Python enviroment
+#### Python environment
 
-Clone this proyect
+Clone this project
 
 ```bash
 git clone https://github.com/Patrick564/contacts_calendar.git
 ```
 
-If yout don't have a virtual enviroment create one (call folder as you like)
+If you don't have a virtual environment create one (call folder as you like)
 
 ```bash
 python -m venv .venv
@@ -36,7 +36,7 @@ Install the requirements
 pip install -r requirements.txt
 ```
 
-#### Django enviroment
+#### Django environment
 
 First make the migrations
 
@@ -53,7 +53,7 @@ python manage.py createsuperuser
 
 ## Run server
 
-Configure the enviroments variables in a .env file at the same level
+Configure the environments variables in a .env file at the same level
 what settings folder
 
 Then run server

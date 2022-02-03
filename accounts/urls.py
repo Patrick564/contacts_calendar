@@ -65,7 +65,7 @@ urlpatterns = [
 
     # Create
     path('create/', views.CreateAccountView.as_view(), name='create'),
-    path('create/done/', views.DoneCreateAccountView.as_view(), name='create-done'),  # noqa:E501
+    path('create/done/', views.DoneCreateAccountView.as_view(), name='create-done'),
 
     # Settings
     path('settings/', views.SettingsView.as_view(), name='settings'),
@@ -73,6 +73,6 @@ urlpatterns = [
     # Profile
     path('profile/<user>/', views.ProfileView.as_view(), name='profile'),
     path(
-        'profile/<user>/update/', views.UpdateProfileView.as_view(), name='update'  # noqa:E501
+        'profile/<user>/update/', views.UpdateProfileView.as_view(), name='update'
     ),
 ]

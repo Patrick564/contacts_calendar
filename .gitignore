@@ -13,6 +13,7 @@ db.sqlite3
 
 # Local settings
 *.env
+!example.env
 
 # Framework folders
 theme/

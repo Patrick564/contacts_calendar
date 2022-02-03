@@ -5,116 +5,101 @@
 {% block body_title %}Create account{% endblock %}
 
 {% block body_main %}
-    <div class="grid justify-center m-3">
-        <form method="post">
-            {% csrf_token %}
+  <div class="grid justify-center m-3">
+    <form method="post">
+      {% csrf_token %}
 
-            <div class="mb-1" role="alert">
-                <span class="text-sm text-red-600 italic">
-                    {{ form.non_field_errors }}
-                </span>
-            </div>
+      <div class="mb-1" role="alert">
+        <span class="text-sm text-red-600 italic">
+          {{ form.non_field_errors }}
+        </span>
+      </div>
 
-            <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-3 gap-4 border border-gray-500 rounded-lg m-2 p-3">
-                <div class="font-serif text-xl md:row-span-1 md:col-span-3 border-b border-gray-500">
-                    <p>Personal information</p>
-                </div>
+      <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 gap-4 border border-gray-500 rounded-lg m-2 p-3">
+        <div class="font-serif text-left text-xl md:row-span-1 md:col-span-2 border-b border-gray-500">
+          <p>Account Information</p>
+        </div>
 
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Full name
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="full_name" id="full_name">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.full_name.errors }}
-                        </span>
-                    </div>
-                </div>
+        <div class="text-left">
+          <label class="block text-lg font-serif" for="id_email">
+            Email
+          </label>
+          <input
+            class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline"
+            type="email"
+            name="email"
+            id="id_email"
+          >
+          <div class="mt-1" role="alert">
+            <span class="text-sm text-red-600 italic">
+              {{ form.email.errors }}
+            </span>
+          </div>
+        </div>
 
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Phone
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="phone_number_0" id="phone_number">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.phone_number_0.errors }}
-                        </span>
-                    </div>
-                </div>
+        <div class="text-left">
+          <label class="block text-lg font-serif" for="id_username">
+            Username
+          </label>
+          <input
+            class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="username"
+            id="id_username"
+          >
+          <div class="mt-1" role="alert">
+            <span class="text-sm text-red-600 italic">
+              {{ form.username.errors }}
+            </span>
+          </div>
+        </div>
 
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Birth date *
-                    </label>
-                    <input class="font-sans text-sm appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="date" name="date_of_birth" id="date_of_birth">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.date_of_birth.errors }}
-                        </span>
-                    </div>
-                </div>
-            </div>
+        <div class="text-left">
+          <label class="block text-lg font-serif" for="id_password1">
+            Password
+          </label>
+          <input
+            class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline"
+            type="password"
+            name="password1"
+            id="id_password1"
+          >
+          <div class="mt-1" role="alert">
+            <span class="text-sm text-red-600 italic">
+              {{ form.password1.errors }}
+            </span>
+          </div>
+        </div>
 
-            <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-3 gap-4 border border-gray-500 rounded-lg m-2 p-3">
-                <div class="font-serif text-left text-xl md:row-span-1 md:col-span-3 border-b border-gray-500">
-                    <p>Account</p>
-                </div>
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Email *
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" id="email">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.email.errors }}
-                        </span>
-                    </div>
-                </div>
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Username *
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="username">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.username.errors }}
-                        </span>
-                    </div>
-                </div>
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Password *
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="password1" id="password1">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.password1.errors }}
-                        </span>
-                    </div>
-                </div>
-                <div class="text-left">
-                    <label class="block text-lg font-serif" for="">
-                        Password confirmation *
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="password" name="password2" id="password2">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.password2.errors }}
-                        </span>
-                    </div>
-                </div>
-            </div>
+        <div class="text-left">
+          <label class="block text-lg font-serif" for="id_password2">
+            Confirm Password
+          </label>
+          <input
+            class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline"
+            type="password"
+            name="password2"
+            id="id_password2"
+          >
+          <div class="mt-1" role="alert">
+            <span class="text-sm text-red-600 italic">
+              {{ form.password2.errors }}
+            </span>
+          </div>
+        </div>
+      </div>
 
-            <div class="flex justify-between m-2">
-                <a class="block text-purple-500 font-mono bg-transparent hover:underline rounded mt-3 p-2" href="{% url 'accounts:login' %}">
-                    Login
-                </a>
-                <button class="block font-mono bg-green-300 border-green-300 hover:border-transparent hover:bg-green-500 rounded mt-3 p-2" type="submit">
-                    Create
-                </button>
-            </div>
-        </form>
-    </div>
+      <div class="flex justify-between m-2">
+        <a class="block text-purple-500 font-mono bg-transparent hover:underline rounded mt-3 p-2"
+           href="{% url 'accounts:login' %}">
+          Login
+        </a>
+        <button
+          class="block font-mono bg-green-300 border-green-300 hover:border-transparent hover:bg-green-500 rounded mt-3 p-2"
+          type="submit">
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
 {% endblock body_main %}

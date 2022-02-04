@@ -109,6 +109,6 @@ class DoneCreateAccountView(TemplateView):
     def dispatch(self, request, *args, **kwargs):
         # If not user auth redirect to principal page
         if not request.user.is_authenticated:
-            return redirect('contact_list:index')
+            return redirect('contacts:home')
 
         return super().dispatch(request, *args, **kwargs)

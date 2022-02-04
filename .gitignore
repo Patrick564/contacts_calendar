@@ -5,6 +5,10 @@ db.sqlite3
 # Virtualenv
 .venv
 
+# Static
+staticfiles/*
+!staticfiles/.keep
+
 # Editor
 .vscode
 

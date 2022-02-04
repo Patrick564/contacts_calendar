@@ -12,7 +12,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['.herokuapp.com', '*.herokuapp.*']
 
 
-print(os.getenv('DATABASE_URL'))
+print(dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+    ))
 # Database
 DATABASES = {
     'default': dj_database_url.config(

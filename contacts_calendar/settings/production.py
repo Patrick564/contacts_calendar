@@ -6,10 +6,10 @@ load_dotenv()
 from .base import *
 
 # Turn off in production
-DEBUG = False
+DEBUG = True
 
 # Allowed hosts
-ALLOWED_HOSTS = ['contacs-calendar.herokuapp.com']
+ALLOWED_HOSTS = ['.herokuapp.com', '*.herokuapp.*']
 
 # Database
 DATABASES = {

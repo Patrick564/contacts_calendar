@@ -1,13 +1,14 @@
 # Django
 __pycache__/
 db.sqlite3
+migrations/*
+!migrations/__init__.py
 
 # Virtualenv
 .venv
 
 # Static
 staticfiles/*
-!staticfiles/.keep
 
 # Editor
 .vscode

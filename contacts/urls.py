@@ -8,6 +8,9 @@ from . import views
 app_name = 'contacts'
 
 urlpatterns = [
+    # Home
+    path('', views.Index.as_view(), name='home'),
+
     # Add
     path('add/', views.AddContactView.as_view(), name='add'),
 

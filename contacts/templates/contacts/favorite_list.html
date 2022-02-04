@@ -3,27 +3,24 @@
 {% block title %}Favorites{% endblock %}
 
 {% block body_main %}
-    {% if favorite_contacts %}
+  {% if favorite_contacts %}
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-2 p-3">
+      {% for contact in favorite_contacts %}
 
-        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-2 p-3">
-            {% for contact in favorite_contacts %}
+        <div class="grid border border-gray-600 rounded-lg bg-gray-100">
+          {% include 'base/contact_top_buttons.html' %}
 
-                <div class="grid border border-gray-600 rounded-lg bg-gray-100">
-                    {% include 'base/contact_top_buttons.html' %}
-
-                    {% include 'base/contact_fields.html' %}
-
-                    {% include 'base/contact_bottom_buttons.html' %}
-                </div>
-            {% endfor %}
+          {% include 'base/contact_fields.html' %}
         </div>
-    {% else %}
-        <div class="grid justify-center m-2 p-3">
-            Anyone contact in the contact list.
-        </div>
-    {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="grid justify-center m-2 p-3">
+      Anyone contact in the contact list.
+    </div>
+  {% endif %}
 {% endblock body_main %}
 
 {% block body_footer %}
-    {% include 'base/contact_pagination.html' %}
+  {% include 'base/contact_pagination.html' %}
 {% endblock body_footer %}

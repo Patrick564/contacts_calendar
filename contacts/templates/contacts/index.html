@@ -10,8 +10,6 @@
           {% include 'base/contact_top_buttons.html' %}
 
           {% include 'base/contact_fields.html' %}
-
-          {% include 'base/contact_bottom_buttons.html' %}
         </div>
       {% endfor %}
     </div>
@@ -21,7 +19,8 @@
       {% if request.user.is_authenticated %}
         Add new contacts in the button add.
       {% else %}
-        <div class="bg-white flex flex-col justify-self-center justify-items-center border rounded-md border-gray-500 mt-10 m-2 p-3 w-64">
+        <div
+          class="bg-white flex flex-col justify-self-center justify-items-center border rounded-md border-gray-500 mt-10 m-2 p-3 w-64">
           <div class="text-sm text-center">
             <a class="block text-black hover:text-green-500 rounded lg:mt-0 m-1 p-2"
                href="{% url 'accounts:login' %}">

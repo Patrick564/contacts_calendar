@@ -7,6 +7,23 @@ from contacts.models import ContactField
 from contacts.forms import AddContactForm
 
 
+class Index(ListView):
+    """
+    Show all contacts of the current user.
+    """
+    model = ContactField
+    context_object_name = 'all_contacts'
+    template_name = 'contacts/index.html'
+    paginate_by = 9
+
+    def get_queryset(self):
+        all_contacts = ContactField.objects.filter(
+            user=self.request.user.id
+        ).order_by('id')
+
+        return all_contacts
+
+
 class AddContactView(LoginRequiredMixin, CreateView):
     """
     Add a new contact.

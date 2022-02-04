@@ -21,7 +21,7 @@ class ContactField(models.Model):
         on_delete=models.CASCADE
     )
     full_name = models.CharField(max_length=50, default='Cosme Fulanito')
-    # phone_number = PhoneField(default='00000000')
+    phone_number = PhoneField(default='00000000')
     contact_email = models.EmailField(
         max_length=254,
         default='empty@cc.com'

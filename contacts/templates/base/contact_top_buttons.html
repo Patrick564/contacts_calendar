@@ -1,0 +1,51 @@
+<div class="flex justify-between border-b border-gray-500 m-2 p-2">
+  <div class="mx-2">
+    <span># {{ contact.id }}</span>
+  </div>
+  <div class="static mx-2">
+    <button onclick="optionButtons({{ contact.id }})">
+      <img src="../../static/contact_list/img/dots.png" alt="options">
+    </button>
+
+    <div class="bg-white absolute border border-gray-800 rounded-md -ml-32 p-3 w-32 hidden" id="{{ contact.id }}">
+        <a
+          class="block font-mono bg-teal-200 border-double border-2 border-teal-400 hover:border-transparent hover:bg-teal-400 rounded my-3 px-2 py-1"
+          href="{% url 'contacts:update' contact.id %}"
+        >
+          Update
+        </a>
+
+      <form action="{% url 'contacts:add-favorite' contact.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="favorite" value="{% if contact.favorite %}False{% else %}True{% endif %}">
+        <button
+          class="block font-mono {% if contact.favorite %} bg-purple-400 {% endif %} border-2 border-purple-400 hover:border-transparent hover:bg-purple-400 rounded my-3 px-2 py-1"
+          type="submit"
+        >
+          Favorite
+        </button>
+      </form>
+
+      <form action="{% url 'contacts:add-filed' contact.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="filed" value="{% if contact.filed %}False{% else %}True{% endif %}">
+        <button
+          class="block font-mono {% if contact.filed %} bg-yellow-400 {% endif %} border-2 border-double border-yellow-400 hover:border-transparent hover:bg-yellow-400 rounded my-3 px-2 py-1"
+          type="submit"
+        >
+          File
+        </button>
+      </form>
+
+      <form action="{% url 'contacts:delete' contact.id %}" method="POST">
+        {% csrf_token %}
+        <button
+          class="block font-mono bg-transparent border-2 border-dashed border-red-400 hover:border-transparent hover:bg-red-400 rounded my-3 px-2 py-1"
+          type="submit"
+        >
+          Delete
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

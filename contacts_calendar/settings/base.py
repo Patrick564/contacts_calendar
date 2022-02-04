@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     # Created apps
     'accounts',
     'contacts',
-    'contact_list',
 
     # Installed libraries
     'phone_field',

@@ -9,7 +9,7 @@ from .base import *
 DEBUG = False
 
 # Allowed hosts
-ALLOWED_HOSTS = ['*.herokuapp.com']
+ALLOWED_HOSTS = ['contacs-calendar.herokuapp.com']
 
 # Database
 DATABASES = {

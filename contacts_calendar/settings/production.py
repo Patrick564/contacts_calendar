@@ -6,7 +6,7 @@ import dj_database_url
 from .base import *
 
 # Turn off in production
-DEBUG = False
+DEBUG = True
 
 # Allowed hosts
 ALLOWED_HOSTS = ['.herokuapp.com', '*.herokuapp.*']

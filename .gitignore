@@ -7,7 +7,6 @@ db.sqlite3
 
 # Static
 staticfiles/*
-!staticfiles/.keep
 
 # Editor
 .vscode

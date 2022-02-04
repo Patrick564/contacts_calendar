@@ -1,13 +1,9 @@
+import os
+
 from dotenv import load_dotenv
+
 load_dotenv()
 
-from .base import *
-
-# Turn off in production
-DEBUG = True
-
-# Don't let this in production
-ALLOWED_HOSTS = ['*']
 
 # Database
 DATABASES = {

@@ -11,10 +11,11 @@ DEBUG = True
 # Allowed hosts
 ALLOWED_HOSTS = ['.herokuapp.com', '*.herokuapp.*']
 
+
+print(os.getenv('DATABASE_URL'))
 # Database
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('DATABASE_URL'),
-        conn_max_age=600
     )
 }

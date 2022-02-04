@@ -6,7 +6,7 @@ load_dotenv()
 from .base import *
 
 # Turn off in production
-DEBUG = True
+DEBUG = False
 
 # Allowed hosts
 ALLOWED_HOSTS = ['.herokuapp.com', '*.herokuapp.*']

@@ -18,7 +18,7 @@ Clone this project
 git clone https://github.com/Patrick564/contacts_calendar.git
 ```
 
-If you don't have a virtual environment create one (call folder as you like)
+If you don't have a virtual environment create one (call folder as you like).
 
 ```bash
 python -m venv .venv

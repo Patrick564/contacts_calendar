@@ -18,6 +18,9 @@ EMAIL_USE_TLS = True
 
 # Application definition
 INSTALLED_APPS = [
+    # Render setting
+    'render.apps.RenderConfig',
+
     # Created apps
     'accounts',
     'contacts',

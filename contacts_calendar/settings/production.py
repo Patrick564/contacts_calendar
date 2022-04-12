@@ -1,3 +1,4 @@
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -30,7 +31,7 @@ STATIC_ROOT = BASE_DIR + '/staticfiles'
 # Database
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
+        default=os.getenv('RENDER_DB_URL'),
         conn_max_age=600
     )
 }

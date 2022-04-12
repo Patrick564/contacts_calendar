@@ -1,7 +1,7 @@
 databases:
   - name: contacts-calendar
-    databaseName: contacts-calendar
-    user: contacts-calendar
+    databaseName: contacts_calendar
+    user: contacts_calendar_user
 
 services:
   - type: web

@@ -9,7 +9,7 @@ services:
     name: contacts-calendar
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn mysite.wsgi:application"
+    startCommand: "gunicorn contacts_calendar.wsgi:application"
     envVars:
       - key: DATABASE_URL
         fromDatabase:

@@ -3,50 +3,49 @@
 {% block title %}Settings{% endblock %}
 
 {% block body_main %}
-  <div class="grid gap-4 justify-center">
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 rounded-lg border border-gray-600 bg-gray-100 m-4 p-3">
-      <div class="md:row-span-1 md:col-span-2 text-left text-xl font-serif border-b border-gray-500">
-        <p>App settings</p>
-      </div>
-      <div class="text-left m-2 p-1">
-        <label class="block text-lg font-serif" for="">
-          Personal information
-        </label>
-        <a class="text-purple-500 font-mono hover:underline rounded"
-           href="{% url 'accounts:profile' request.user.username %}">
-          Profile
-        </a>
-      </div>
-      <div class="text-left m-2 p-1">
-        <label class="block text-lg font-serif" for="">
-          Dark theme
-        </label>
-        <a class="text-purple-500 font-mono hover:underline rounded" href="#">
-          Future
-        </a>
-      </div>
+<div class="grid gap-4 justify-center">
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 rounded-lg border border-gray-600 bg-gray-100 m-4 p-3">
+    <div class="md:row-span-1 md:col-span-2 text-left text-xl font-serif border-b border-gray-500">
+      <p>App settings</p>
     </div>
-
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 rounded-lg border border-gray-600 bg-gray-100 m-4 p-3">
-      <div class="md:row-span-1 md:col-span-2 text-left text-xl font-serif border-b border-gray-500">
-        <p>Account</p>
-      </div>
-      <div class="text-left m-2 p-1">
-        <label class="block text-lg font-serif" for="">
-          Password
-        </label>
-        <a class="text-purple-500 font-mono hover:underline rounded" href="{% url 'accounts:password-change' %}">
-          Change password
-        </a>
-      </div>
+    <div class="text-left m-2 p-1">
+      <label class="block text-lg font-serif" for="">
+        Personal information
+      </label>
+      <a class="text-purple-500 font-mono hover:underline rounded"
+        href="{% url 'accounts:profile' request.user.username %}">
+        Profile
+      </a>
     </div>
-
-    <div class="text-center m-4">
-      <a
-        class="block font-mono text-indigo-500 bg-transparent border-dashed border-2 border-indigo-500 hover:bg-indigo-500 hover:text-white rounded p-2"
-        href="{% url 'contacts:home' %}">
-        Index
+    <div class="text-left m-2 p-1">
+      <label class="block text-lg font-serif" for="">
+        Dark theme
+      </label>
+      <a class="text-purple-500 font-mono hover:underline rounded" href="#">
+        Future
       </a>
     </div>
   </div>
+
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 rounded-lg border border-gray-600 bg-gray-100 m-4 p-3">
+    <div class="md:row-span-1 md:col-span-2 text-left text-xl font-serif border-b border-gray-500">
+      <p>Account</p>
+    </div>
+    <div class="text-left m-2 p-1">
+      <label class="block text-lg font-serif" for="">
+        Password
+      </label>
+      <a class="text-purple-500 font-mono hover:underline rounded" href="{% url 'accounts:password-change' %}">
+        Change password
+      </a>
+    </div>
+  </div>
+
+  <div class="text-center m-4">
+    <a class="block font-mono text-indigo-500 bg-transparent border-dashed border-2 border-indigo-500 hover:bg-indigo-500 hover:text-white rounded p-2"
+      href="{% url 'contacts:home' %}">
+      Index
+    </a>
+  </div>
+</div>
 {% endblock body_main %}

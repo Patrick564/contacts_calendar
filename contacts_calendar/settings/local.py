@@ -1,13 +1,20 @@
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
 from .base import *
+
+# Secret key
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Turn off in production
 DEBUG = True
 
 # Don't let this in production
 ALLOWED_HOSTS = ['*']
+
+# Sendgrid API key
+EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
 
 # Database
 DATABASES = {

@@ -1,11 +1,6 @@
 import os
-from dotenv import load_dotenv
-load_dotenv()
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname((os.path.abspath(__file__)))))
-
-SECRET_KEY = os.getenv('SECRET_KEY')
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -19,7 +14,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
 EMAIL_USE_TLS = True
 
 # Application definition
@@ -27,10 +21,12 @@ INSTALLED_APPS = [
     # Created apps
     'accounts',
     'contacts',
+    'theme',
 
     # Installed libraries
     'phone_field',
     'livereload',
+    'tailwind',
 
     # Django apps
     'django.contrib.admin',
@@ -98,12 +94,14 @@ USE_I18N = True
 USE_L10N = False
 USE_TZ = True
 
+# Tailwind
+TAILWIND_APP_NAME = 'theme'
+
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     BASE_DIR + '/static',
 )
-STATIC_ROOT = BASE_DIR + '/staticfiles'
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'

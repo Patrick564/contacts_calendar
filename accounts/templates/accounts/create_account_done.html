@@ -5,19 +5,19 @@
 {% block body_title %}Thanks!{% endblock %}
 
 {% block body_main %}
-    <div class="grid justify-center m-2 p-3">
-        <div class="bg-green-200 border border-gray-500 rounded-lg mb-3 p-3">
-            <p class="text-lg">
-                Your account is successfuly created, thanks!
-            </p>
-        </div>
+<div class="grid justify-center m-2 p-3">
+  <div class="bg-green-200 border border-gray-500 rounded-lg mb-3 p-3">
+    <p class="text-lg">
+      Your account is successfuly created, thanks!
+    </p>
+  </div>
 
-        <div class="text-center font-serif">
-            <p class="">
-                <a class="text-blue-500 hover:underline" href="{% url 'contacts:home' %}">
-                    [Redirect to principal page]
-                </a>
-            </p>
-        </div>
-    </div>
+  <div class="text-center font-serif">
+    <p class="">
+      <a class="text-blue-500 hover:underline" href="{% url 'contacts:home' %}">
+        [Redirect to principal page]
+      </a>
+    </p>
+  </div>
+</div>
 {% endblock body_main %}

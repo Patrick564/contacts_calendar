@@ -3,88 +3,97 @@
 {% block title %}Add - Contacts calendar{% endblock %}
 
 {% block body_main %}
-    <div class="grid justify-center m-2 p-3">
-        <form method="post">
-            {% csrf_token %}
+<div class="grid justify-center m-2 p-3">
+  <form method="post">
+    {% csrf_token %}
 
-            <input type="hidden" value="{{ request.user.id }}" name="{{ form.user.html_name }}">
+    <input type="hidden" value="{{ request.user.id }}" name="{{ form.user.html_name }}">
 
-            <div class="mb-1" role="alert">
-                <span class="text-sm text-red-600 italic">
-                    {{ form.non_field_errors }}
-                </span>
-            </div>
-
-            <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 gap-4 rounded-lg border border-gray-500 m-2 p-3">
-                <div class="md:row-span-1 md:col-span-2 border-b">
-                    <div class="text-left">
-                        <p class="text-xl font-serif">
-                            Add contact
-                        </p>
-                    </div>
-                </div>
-
-                <div class="m-1">
-                    <label class="block text-lg font-serif mb-2" for="{{ form.full_name.id_for_label }}">
-                        Full name
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="text" name="{{ form.full_name.html_name }}" id="{{ form.full_name.auto_id }}">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.full_name.errors }}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="m-1">
-                    <label class="block font-serif mb-2" for="{{ form.contact_email.id_for_label }}">
-                        Email
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="email" name="{{ form.contact_email.html_name }}" id="{{ form.contact_email.auto_id }}">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.contact_email.errors }}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="m-1">
-                    <label class="block font-serif mb-2" for="{{ form.phone_number.id_for_label }}">
-                        Phone
-                    </label>
-                    <input class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="tel" name="phone_number_0" id="id_phone_number_0">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.phone_number.errors }}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="m-1">
-                    <label class="block font-serif mb-2" for="{{ form.date_of_birth.id_for_label }}">
-                        Birth date
-                    </label>
-                    <input class="font-sans text-sm appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline" type="date" name="{{ form.date_of_birth.html_name }}" id="{{ form.date_of_birth.auto_id }}">
-                    <div class="mt-1" role="alert">
-                        <span class="text-sm text-red-600 italic">
-                            {{ form.date_of_birth.errors }}
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex justify-between m-2 pt-2">
-                <div class="">
-                    <a class="block text-red-500 bg-transparent font-mono hover:underline p-2" href="{% url 'contacts:home' %}">
-                        Cancel
-                    </a>
-                </div>
-                <div class="">
-                    <button class="font-mono bg-teal-300 border-teal-300 hover:border-transparent hover:bg-teal-500 rounded p-2" type="submit">
-                        Create
-                    </button>
-                </div>
-            </div>
-        </form>
+    <div class="mb-1" role="alert">
+      <span class="text-sm text-red-600 italic">
+        {{ form.non_field_errors }}
+      </span>
     </div>
+
+    <div class="bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 gap-4 rounded-lg border border-gray-500 m-2 p-3">
+      <div class="md:row-span-1 md:col-span-2 border-b">
+        <div class="text-left">
+          <p class="text-xl font-serif">
+            Add contact
+          </p>
+        </div>
+      </div>
+
+      <div class="m-1">
+        <label class="block text-lg font-serif mb-2" for="{{ form.full_name.id_for_label }}">
+          Full name
+        </label>
+        <input
+          class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline"
+          type="text" name="{{ form.full_name.html_name }}" id="{{ form.full_name.auto_id }}">
+        <div class="mt-1" role="alert">
+          <span class="text-sm text-red-600 italic">
+            {{ form.full_name.errors }}
+          </span>
+        </div>
+      </div>
+
+      <div class="m-1">
+        <label class="block font-serif mb-2" for="{{ form.contact_email.id_for_label }}">
+          Email
+        </label>
+        <input
+          class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline"
+          type="email" name="{{ form.contact_email.html_name }}" id="{{ form.contact_email.auto_id }}">
+        <div class="mt-1" role="alert">
+          <span class="text-sm text-red-600 italic">
+            {{ form.contact_email.errors }}
+          </span>
+        </div>
+      </div>
+
+      <div class="m-1">
+        <label class="block font-serif mb-2" for="{{ form.phone_number.id_for_label }}">
+          Phone
+        </label>
+        <input
+          class="appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline"
+          type="tel" name="phone_number_0" id="id_phone_number_0">
+        <div class="mt-1" role="alert">
+          <span class="text-sm text-red-600 italic">
+            {{ form.phone_number.errors }}
+          </span>
+        </div>
+      </div>
+
+      <div class="m-1">
+        <label class="block font-serif mb-2" for="{{ form.date_of_birth.id_for_label }}">
+          Birth date
+        </label>
+        <input
+          class="font-sans text-sm appearance-none bg-gray-200 text-gray-700 w-full py-1 px-2 border border-blue-400 rounded leading-tight focus:outline-none focus:shadow-outline"
+          type="date" name="{{ form.date_of_birth.html_name }}" id="{{ form.date_of_birth.auto_id }}">
+        <div class="mt-1" role="alert">
+          <span class="text-sm text-red-600 italic">
+            {{ form.date_of_birth.errors }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-between m-2 pt-2">
+      <div class="">
+        <a class="block text-red-500 bg-transparent font-mono hover:underline p-2" href="{% url 'contacts:home' %}">
+          Cancel
+        </a>
+      </div>
+      <div class="">
+        <button class="font-mono bg-teal-300 border-teal-300 hover:border-transparent hover:bg-teal-500 rounded p-2"
+          type="submit">
+          Create
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 {% endblock body_main %}

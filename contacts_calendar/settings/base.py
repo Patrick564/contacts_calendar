@@ -19,7 +19,7 @@ EMAIL_USE_TLS = True
 # Application definition
 INSTALLED_APPS = [
     # Render setting
-    'render.apps.RenderConfig',
+    #'render.apps.RenderConfig',
 
     # Created apps
     'accounts',
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # WhiteNoise middleware
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

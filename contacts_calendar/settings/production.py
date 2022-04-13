@@ -1,8 +1,7 @@
 import os
+import dj_database_url
 from dotenv import load_dotenv
 load_dotenv()
-
-import dj_database_url
 
 from .base import *
 
@@ -16,6 +15,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+# Sendgrid API key
+EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
 
 # Allowed hosts
 ALLOWED_HOSTS = []
@@ -31,7 +33,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Database
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('RENDER_DB_URL'),
+        default=os.getenv('DATABASE_URL'),
         conn_max_age=600
     )
 }

@@ -1,11 +1,13 @@
-# @remind ToDo a dockerfile for database and web server
+# syntax=docker/dockerfile:1
+FROM python:3.9-alpine
 
-FROM python:3.8-alpine
-
+ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /contact_calendar
+WORKDIR /contacts_calendar/
 
-ADD . /contact_calendar/
+COPY requirements.txt /contacts_calendar/
 
 RUN pip install -r requirements.txt
+
+COPY . /contacts_calendar/

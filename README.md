@@ -2,15 +2,17 @@
 
 A page for contacts management with basic fields as first name, last name,
 phone number, email and date of birth.
-View in https://contacts-calendar.herokuapp.com/
+[View in here](https://contacts-calendar.onrender.com)
+
+Example email: example@contacts.com and Password: RenderDeploy12345
 
 ![screenshot1](https://raw.githubusercontent.com/Patrick564/static-files/main/screenshots/contact-1.png)
 ![screenshot2](https://raw.githubusercontent.com/Patrick564/static-files/main/screenshots/contact-2.png)
 
-
 ## Installation
 
-Steps for clone and recreate this page yourself.
+Steps for clone and recreate this page yourself using Python3.9.7 and Poetry.
+Also can use the [docker image](https://hub.docker.com/repository/docker/patrick794/contacts-calendar) with docker-compose file
 
 ### Installing
 
@@ -22,22 +24,12 @@ Clone this project
 git clone https://github.com/Patrick564/contacts_calendar.git
 ```
 
-If you don't have a virtual environment create one (call folder as you like), in project folder.
+Create the virtualenv with Poetry and install dependences.
 
 ```bash
-python -m venv .venv
-```
-
-And activate with the command
-
-```bash
-source .venv/bin/activate
-```
-
-Install the requirements
-
-```bash
-pip install -r requirements.txt
+poetry env use python3.9.7
+poetry shell
+poetry install
 ```
 
 And put your env vars in a .env file, like example.env.

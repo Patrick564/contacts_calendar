@@ -11,6 +11,7 @@ services:
       - POSTGRES_PASSWORD=12345
   web:
     build: .
+    #image: patrick794/contacts-calendar:latest
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/contacts_calendar

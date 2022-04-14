@@ -6,19 +6,25 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=contacts_calendar
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=12345
   web:
     build: .
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - .:/code
+      - .:/contacts_calendar
     ports:
       - "8000:8000"
     environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - NAME_DB=contacts_calendar
+      - USER_DB=postgres
+      - PASSWORD_DB=12345
+      - HOST_DB=db
+      - PORT_DB=5432
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+      - EMAIL_SENDER=${EMAIL_SENDER}
+      - SENGRID_API_KEY=${SENDGRID_API_KEY}
+      - SECRET_KEY=${SECRET_KEY}
     depends_on:
       - db

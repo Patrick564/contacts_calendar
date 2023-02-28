@@ -12,11 +12,11 @@ ENV PYTHONUNBUFFERED=1
 
 RUN pip install --upgrade pip
 
-COPY requirements.txt ./contacts_calendar/
+COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . ./contacts_calendar/
+COPY . .
 
 RUN python manage.py collectstatic --no-input
 

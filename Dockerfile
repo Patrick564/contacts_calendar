@@ -8,8 +8,8 @@ RUN mkdir -p $APP
 
 WORKDIR $APP
 
-ENV PYTHONDOWNWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDOWNWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 RUN pip install --upgrade pip
 
@@ -19,4 +19,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE $PORT
 
-CMD python manage.py collectstatic && python manage.py makemigrations && python manage.py migrate && gunicorn --bind $PORT --workers 1 contacts_calendar.wsgi
+CMD python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate && gunicorn --bind $PORT --workers 1 contacts_calendar.wsgi

@@ -19,4 +19,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE $PORT
 
-CMD python manage.py makemigrations && python manage.py migrate && gunicorn --bind 0.0.0.0:$PORT --workers 1 contacts_calendar.wsgi
+CMD python manage.py collectstatic && python manage.py makemigrations && python manage.py migrate && gunicorn --bind $PORT --workers 1 contacts_calendar.wsgi

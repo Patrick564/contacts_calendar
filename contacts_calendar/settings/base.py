@@ -101,9 +101,9 @@ TAILWIND_APP_NAME = 'theme'
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     BASE_DIR + '/static',
-# )
+STATICFILES_DIRS = (
+    BASE_DIR + '/static',
+)
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'

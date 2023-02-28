@@ -105,5 +105,5 @@ STATICFILES_DIRS = (
     BASE_DIR + '/static',
 )
 
-# LOGIN_URL = '/accounts/login/'
-# LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'

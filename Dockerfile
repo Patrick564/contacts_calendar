@@ -23,4 +23,4 @@ COPY . .
 
 EXPOSE $PORT
 
-CMD python manage.py collectstatic --no-input && gunicorn --bind 0.0.0.0:$PORT contacts_calendar.wsgi
+CMD python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:$PORT

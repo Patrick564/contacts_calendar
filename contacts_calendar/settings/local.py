@@ -19,7 +19,7 @@ EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django_cockroachdb',
         'NAME': os.getenv('NAME_DB'),
         'USER': os.getenv('USER_DB'),
         'PASSWORD': os.getenv('PASSWORD_DB'),

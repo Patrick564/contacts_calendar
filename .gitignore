@@ -8,7 +8,7 @@ migrations/*
 .venv
 
 # Static
-staticfiles/*
+# staticfiles/*
 
 # Editor
 .vscode

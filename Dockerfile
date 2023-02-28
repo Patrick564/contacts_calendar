@@ -13,13 +13,14 @@ ENV PYTHONUNBUFFERED=1
 RUN pip install --upgrade pip
 
 COPY requirements.txt .
+COPY manage.py .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN python manage.py collectstatic --no-input
+RUN python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --no-input
 
 EXPOSE $PORT
 
-CMD python manage.py makemigrations && python manage.py migrate && gunicorn --bind $PORT contacts_calendar.wsgi
+CMD gunicorn --bind $PORT contacts_calendar.wsgi

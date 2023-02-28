@@ -6,7 +6,7 @@ load_dotenv()
 from .base import *
 
 # Turn off in production
-DEBUG = False
+DEBUG = True
 
 # Generate if is a new project
 SECRET_KEY = os.getenv('SECRET_KEY')

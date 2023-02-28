@@ -11,6 +11,4 @@ urlpatterns = [
     # Page sites
     path('', include('contacts.urls')),
     path('accounts/', include('accounts.urls')),
-]
-
-# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

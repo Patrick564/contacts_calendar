@@ -7,8 +7,8 @@ RUN mkdir -p /contacts_calendar
 
 WORKDIR /contacts_calendar
 
-ENV PYTHONDOWNWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONDOWNWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 RUN pip install --upgrade pip
 
@@ -23,4 +23,4 @@ COPY . .
 
 EXPOSE $PORT
 
-CMD python manage.py collectstatic --no-input && gunicorn --bind $PORT contacts_calendar.wsgi
+CMD python manage.py collectstatic --no-input && gunicorn --bind 0.0.0.0:8000 contacts_calendar.wsgi

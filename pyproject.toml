@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "contacts_calendar"
-version = "1.2.0"
+version = "1.2.1"
 description = ""
 authors = ["Patrick Vilchez <pvilchez794@gmail.com>"]
 license = "MIT"
